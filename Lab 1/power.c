@@ -1,5 +1,18 @@
 #include <stdio.h>
 
+// Function decleration
+int power(int x, int y);
+
+// what if we wanted to write this after main?
+int main()
+{
+	int result;
+
+	result = power(3,4);
+	printf("3 to the power of 4 is %i \n", result);
+	return 0;
+}
+
 // raise x to the y-th power
 int power(int x, int y)
 {
@@ -11,14 +24,4 @@ int power(int x, int y)
 	}
 
 	return result;
-}
-
-// what if we wanted to write this after main?
-int main()
-{
-	int result;
-
-	result = power(3,4);
-	printf("3 to the power of 4 is %i \n", result);
-	return 0;
 }
