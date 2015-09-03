@@ -20,16 +20,19 @@ int main(int argc, char const *argv[])
             switch (loopCount) {
                 case 0:
                     runProcess1();
+                    return 0;
                 case 1:
+                    sleep(1);
                     runProcess2();
+                    return 0;
                 case 2:
+                    sleep(2);
                     runProcess3();
+                    return 0;
                 case 3:
+                    sleep(10);
                     runProcess4();
             }
-        }
-        else {
-            break;
         }
     }
 

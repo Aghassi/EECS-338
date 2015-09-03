@@ -17,7 +17,7 @@ void runProcess2() {
     for (i; i < 5; i++) {
         int result = computeBinomial(numbers[i]);
         printf("%d \n", result);
-        sleep(8);
+        sleep(2);
     }
 }
 
@@ -28,6 +28,7 @@ void runProcess3() {
     for (i; i < 4; i++) {
         int result = computeBinomial(numbers[i]);
         printf("%d \n", result);
+        sleep(2);
     }
 }
 
@@ -67,8 +68,7 @@ int computeBinomial(int n) {
 
     int nFactorial = factorial(n);
     int cFactorial = factorial(2);
-    // Unwrap pointer here so we can computer it
     int nMinusKFactorial = factorial(n-2);
 
-    return nFactorial/cFactorial*(nMinusKFactorial);
+    return (nFactorial/(cFactorial*nMinusKFactorial));
 }
