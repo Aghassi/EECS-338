@@ -1,29 +1,38 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 // Method declerations
-int factorial(int *n);
-int computeBinomial(int *n);
+int factorial(int n);
+int computeBinomial(int n);
 
 void runProcess1() {
     printf("(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!\n");
 }
 
 void runProcess2() {
-    int *numbers[] = { 2, 4, 6, 8, 10};
+    int numbers[] = { 2, 4, 6, 8, 10};
+    int i = 0;
 
-    for (int i = 0; i < count; i++) {
-        printf("%d \n", computeBinomial(numbers[i]);
-        sleep(1);
+    for (i; i < 5; i++) {
+        int result = computeBinomial(numbers[i]);
+        printf("%d \n", result);
+        sleep(8);
     }
 }
 
 void runProcess3() {
+    int numbers[] = {3, 5, 7, 9};
+    int i = 0;
 
+    for (i; i < 4; i++) {
+        int result = computeBinomial(numbers[i]);
+        printf("%d \n", result);
+    }
 }
 
 void runProcess4() {
-
+    execl("/bin/ls", "ls", "-l", NULL);
 }
 
 /**
@@ -32,12 +41,13 @@ Computes the factorial of a given number
 @return the factorial of a given number, -1 otherwise
 **/
 int factorial(int n) {
-    if(*n < 0) {
+    if(n < 0) {
         return -1;
     }
 
     int result = 1;
-    for (int i = *n; i > 0; i--) {
+    int i = n;
+    for (i; i > 0; i--) {
         result *= i;
     }
 

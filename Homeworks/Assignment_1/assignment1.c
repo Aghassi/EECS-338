@@ -1,27 +1,48 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <processes.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include "processes.c"
+
+#define NUM_FORKS 4
 
 int main(int argc, char const *argv[])
 {
-    // Define a fork count so we can iterate
-    int forkCount = 4;
-    int loopCount = 1
+    pid_t pid;
+    int loopCount = 0;
+    int status;
 
-    for (loopCount; loopCount < forkCount; loopCount++) {
-        switch(loopCount) {
-            case loopCount == 1:
-                runProcess1();
-            case loopCount == 2:
-                runProcess2();
-            case loopCount == 3:
-                runProcess3();
-            case loopCount == 4:
-                runProcess4();
+    for (loopCount; loopCount < NUM_FORKS; loopCount++) {
+        pid = fork();
+
+        if (pid == 0) {
+            // We are a child
+            switch (loopCount) {
+                case 0:
+                    runProcess1();
+                case 1:
+                    runProcess2();
+                case 2:
+                    runProcess3();
+                case 3:
+                    runProcess4();
+            }
+        }
+        else {
+            break;
         }
     }
 
-    wait();
+    // Parent
+    if(pid > 0) {
+        int i = 0;
+        for (i; i < NUM_FORKS; i++)
+        {
+            // Get a pointer to status so wait can return it.
+            pid = wait(&status);
+            printf("Process %d exited with status %d \n", pid, WEXITSTATUS(status));
+        }
+    }
     /*
     Loop over all the processes so we know when all the child processes are over
     On each loop we can iterate / check the fork count to see what child we are dealing with
