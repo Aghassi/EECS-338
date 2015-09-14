@@ -1,0 +1,6 @@
+Question 1:
+Real IDs are the ones that allow the original creator of the file to execute the file
+Effective IDs are temporary IDs assigned to a user to execute a file with the priveleges of another user. 
+
+Question 2:
+Because computers are approaching the processing time of milliseconds, they process things faster then can be counted. For this reason, we must loop around a little to work on giving the computer time to computer the run time.
