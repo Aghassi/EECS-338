@@ -1,17 +1,18 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "helper.c"
 
 // Method declerations
 int factorial(int n);
 int computeBinomial(int n);
 
 void runProcess1() {
+    printIDs("Process 1");
     printf("(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!\n");
 }
 
 void runProcess2() {
+    printIDs("Process 2");
     int numbers[] = { 2, 4, 6, 8, 10};
     int i = 0;
 
@@ -23,6 +24,7 @@ void runProcess2() {
 }
 
 void runProcess3() {
+    printIDs("Process 3");
     int numbers[] = {3, 5, 7, 9};
     int i = 0;
 
@@ -34,6 +36,7 @@ void runProcess3() {
 }
 
 void runProcess4() {
+    printIDs("Process 4");
     execl("/bin/ls", "ls", "-l", NULL);
 }
 

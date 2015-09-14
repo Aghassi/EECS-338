@@ -1,10 +1,12 @@
+// System
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include "processes.c"
+// Local
 #include "helper.c"
+#include "processes.c"
 
 #define NUM_FORKS 4
 
