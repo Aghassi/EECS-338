@@ -84,7 +84,7 @@ int main() {
          perror("wait(&status2)");
          cleanup(EXIT_FAILURE);
       }
-      int status = WEXISTATUS(status1) || WEXITSTATUS(status2);
+      int status = WEXITSTATUS(status1) || WEXITSTATUS(status2);
 
       // Mark the children as finished
       withdrawer_id = -1;
