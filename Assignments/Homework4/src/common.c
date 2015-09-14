@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
@@ -42,7 +43,7 @@ void addToEndOfList(node_t *head, int amountToAdd) {
    current->next->amount = amountToAdd;
    current->next->next = NULL;
 
-   println("Added %i to end of list", amountToAdd);
+   printf("Added %i to end of list", amountToAdd);
 }
 
 /*
@@ -64,7 +65,7 @@ void deleteFirstRequest(struct node **head) {
    free(*head);
    *head = next_node;
 
-   println("removed amount %i from the from of the list", retval);
+   printf("removed amount %i from the from of the list", retval);
 }
 
 /*
