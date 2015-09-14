@@ -1,5 +1,6 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "processes.c"
@@ -12,10 +13,26 @@ int main(int argc, char const *argv[])
     int loopCount = 0;
     int status;
 
+    // char * cuser_id_str;
+    uid_t euid, uid;
+    gid_t gid, egid;
+
+    // cuser_id_str = (char *) cuserid(NULL);
+    uid = getuid();
+    euid = geteuid();
+    gid = getgid();
+    egid = getegid();
+
+    // printf("Parent cuserid: %s \n", cuser_id_str);
+    printf("Parent uid: %d \n", uid);
+    printf("Parent euid: %d \n", euid);
+    printf("Parent gid: %d \n", gid);
+    printf("Parent egid: %d \n", egid);
+
     for (loopCount; loopCount < NUM_FORKS; loopCount++) {
         pid = fork();
 
-        if (pid == 0) {
+        if(pid == 0) {
             // We are a child
             switch (loopCount) {
                 case 0:
@@ -33,6 +50,9 @@ int main(int argc, char const *argv[])
                     sleep(10);
                     runProcess4();
             }
+        }
+        else if(pid < 0) {
+            perror("PID failed.");
         }
     }
 
