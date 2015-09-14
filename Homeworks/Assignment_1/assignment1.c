@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include "processes.c"
+#include "helper.c"
 
 #define NUM_FORKS 4
 
@@ -14,20 +15,11 @@ int main(int argc, char const *argv[])
     int status;
 
     // char * cuser_id_str;
-    uid_t euid, uid;
-    gid_t gid, egid;
 
     // cuser_id_str = (char *) cuserid(NULL);
-    uid = getuid();
-    euid = geteuid();
-    gid = getgid();
-    egid = getegid();
 
     // printf("Parent cuserid: %s \n", cuser_id_str);
-    printf("Parent uid: %d \n", uid);
-    printf("Parent euid: %d \n", euid);
-    printf("Parent gid: %d \n", gid);
-    printf("Parent egid: %d \n", egid);
+    printIDs("Parent");
 
     for (loopCount; loopCount < NUM_FORKS; loopCount++) {
         pid = fork();

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "helper.c"
 
 // Method declerations
 int factorial(int n);
