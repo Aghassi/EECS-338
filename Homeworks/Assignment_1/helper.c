@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void printIDs(char name);
-
 /**
 Prints the uid, euid, gid, and egid of the current process
 @param name a char array with the name of the process
 **/
-void printIDs(char name) {
+void printIDs(char *name) {
     //Declare variables
     uid_t euid, uid;
     gid_t gid, egid;
