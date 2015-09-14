@@ -1,0 +1,3 @@
+[submodule "Assignments/last-makefile"]
+	path = Assignments/last-makefile
+	url = https://github.com/brenns10/last-makefile.git

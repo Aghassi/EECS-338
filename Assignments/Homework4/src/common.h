@@ -1,0 +1,31 @@
+#ifndef SEMAPHORE_COMMON
+#define SEMAPHORE_COMMON
+
+/*
+ * Create 'semenum' structure
+ * (copied from semctl man page)
+ */
+union semenum {
+   int val;                // Value for SETVAL
+   struct semid_ds *buf;   // Buffer for IPC_STAT, IPC_SET
+   unsigned short *array;  // Array for GETALL, SETALL
+   struct seminfo *_buf;   // Buffer for IPC_INFO (Linux Specific)
+};
+
+// Wait and signal operations
+// given to `semop`
+#define WAIT -1
+#define SIGNAL 1
+
+// Holds information about shared data
+// Needed by depositers and withdrawers
+struct shared_data_info {
+   int BUF_SIZE;  // Size of shared buffer (in money)
+   int shmid;     // ID for shared memory
+   int semkey;    // ID for semaphore group
+   int mutex;     // Index for `mutex` semaphore
+   int empty;     // Index for `empty` semaphore
+   int full;      // Index for `full` semaphore
+};
+
+#endif
