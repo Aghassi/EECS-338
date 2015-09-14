@@ -1,0 +1,57 @@
+Parent uid: 1585664348 
+Parent euid: 1585664348 
+Parent gid: 1585664348 
+Parent egid: 1585664348 
+Process 1 uid: 1585664348 
+Process 1 euid: 1585664348 
+Process 1 gid: 1585664348 
+Process 1 egid: 1585664348 
+(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!
+User time for Process 1: 0.000471 
+System time for Process 1: 0.000471 
+total 36
+-rw-rw-r-- 1 dsa28 dsa28    42 Sep 14 12:31 Makefile
+-rwxrwxr-x 1 dsa28 dsa28 15258 Sep 16 10:14 assignment1
+-rw-rw-r-- 1 dsa28 dsa28  1934 Sep 16 10:14 assignment1.c
+-rw-rw-r-- 1 dsa28 dsa28  1365 Sep 15 22:52 helper.c
+-rw-rw-r-- 1 dsa28 dsa28   358 Sep 16 10:15 output.txt
+-rw-rw-r-- 1 dsa28 dsa28  1920 Sep 16 10:14 processes.c
+Parent uid: 1585664348 
+Parent euid: 1585664348 
+Parent gid: 1585664348 
+Parent egid: 1585664348 
+Process 2 uid: 1585664348 
+Process 2 euid: 1585664348 
+Process 2 gid: 1585664348 
+Process 2 egid: 1585664348 
+1 
+6 
+15 
+28 
+45 
+User time for Process 2: 0.000469 
+System time for Process 2: 0.000469 
+Parent uid: 1585664348 
+Parent euid: 1585664348 
+Parent gid: 1585664348 
+Parent egid: 1585664348 
+Process 3 uid: 1585664348 
+Process 3 euid: 1585664348 
+Process 3 gid: 1585664348 
+Process 3 egid: 1585664348 
+3 
+10 
+21 
+36 
+User time for Process 3: 0.000470 
+System time for Process 3: 0.000470 
+Parent uid: 1585664348 
+Parent euid: 1585664348 
+Parent gid: 1585664348 
+Parent egid: 1585664348 
+Process 27786 exited with status 0 
+Process 27789 exited with status 0 
+Process 27787 exited with status 0 
+Process 27788 exited with status 0 
+User time for Parent Process: 0.000464 
+System time for Parent Process: 0.000464 

@@ -33,11 +33,11 @@ int main(int argc, char const *argv[])
                     runProcess1();
                     return 0;
                 case 1:
-                    sleep(1);
+		    sleep(1.5);
                     runProcess2();
                     return 0;
                 case 2:
-                    sleep(2);
+                    sleep(3);
                     runProcess3();
                     return 0;
                 case 3:
@@ -71,5 +71,6 @@ int main(int argc, char const *argv[])
 
     USE EXECVP since exec isn't really a thing anymore.
     */
+    printTime("Parent Process");
     return 0;
 }
