@@ -1,57 +1,58 @@
-Parent uid: 1585664348 
-Parent euid: 1585664348 
-Parent gid: 1585664348 
-Parent egid: 1585664348 
-Process 1 uid: 1585664348 
-Process 1 euid: 1585664348 
-Process 1 gid: 1585664348 
-Process 1 egid: 1585664348 
-(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!
-User time for Process 1: 0.000471 
-System time for Process 1: 0.000471 
-total 36
--rw-rw-r-- 1 dsa28 dsa28    42 Sep 14 12:31 Makefile
--rwxrwxr-x 1 dsa28 dsa28 15258 Sep 16 10:14 assignment1
--rw-rw-r-- 1 dsa28 dsa28  1934 Sep 16 10:14 assignment1.c
--rw-rw-r-- 1 dsa28 dsa28  1365 Sep 15 22:52 helper.c
--rw-rw-r-- 1 dsa28 dsa28   358 Sep 16 10:15 output.txt
--rw-rw-r-- 1 dsa28 dsa28  1920 Sep 16 10:14 processes.c
-Parent uid: 1585664348 
-Parent euid: 1585664348 
-Parent gid: 1585664348 
-Parent egid: 1585664348 
-Process 2 uid: 1585664348 
-Process 2 euid: 1585664348 
-Process 2 gid: 1585664348 
-Process 2 egid: 1585664348 
+Parent uid: 1000 
+Parent euid: 1000 
+Parent gid: 1000 
+Parent egid: 1000 
+Process 2 uid: 1000 
+Process 2 euid: 1000 
+Process 2 gid: 1000 
+Process 2 egid: 1000 
 1 
-6 
-15 
-28 
-45 
-User time for Process 2: 0.000469 
-System time for Process 2: 0.000469 
-Parent uid: 1585664348 
-Parent euid: 1585664348 
-Parent gid: 1585664348 
-Parent egid: 1585664348 
-Process 3 uid: 1585664348 
-Process 3 euid: 1585664348 
-Process 3 gid: 1585664348 
-Process 3 egid: 1585664348 
+Parent uid: 1000 
+Parent euid: 1000 
+Parent gid: 1000 
+Parent egid: 1000 
+Process 3 uid: 1000 
+Process 3 euid: 1000 
+Process 3 gid: 1000 
+Process 3 egid: 1000 
 3 
+6 
+Parent uid: 1000 
+Parent euid: 1000 
+Parent gid: 1000 
+Parent egid: 1000 
+Process 1 uid: 1000 
+Process 1 euid: 1000 
+Process 1 gid: 1000 
+Process 1 egid: 1000 
+(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!
+User time for Process 1: 0.000406 
+System time for Process 1: 0.000406 
+15 
 10 
+28 
 21 
+45 
 36 
-User time for Process 3: 0.000470 
-System time for Process 3: 0.000470 
-Parent uid: 1585664348 
-Parent euid: 1585664348 
-Parent gid: 1585664348 
-Parent egid: 1585664348 
-Process 27786 exited with status 0 
-Process 27789 exited with status 0 
-Process 27787 exited with status 0 
-Process 27788 exited with status 0 
-User time for Parent Process: 0.000464 
-System time for Parent Process: 0.000464 
+total 44
+-rwxr-xr-x 1 davidaghassi davidaghassi 16702 Sep 14 13:59 assignment1
+-rw-r--r-- 1 davidaghassi davidaghassi  1934 Sep 14 13:59 assignment1.c
+-rw-rw-rw- 1 davidaghassi davidaghassi   444 Sep 14 13:41 Assignment1.txt
+-rw-r--r-- 1 davidaghassi davidaghassi  1365 Sep 14 13:30 helper.c
+-rw-rw-rw- 1 davidaghassi davidaghassi    42 Sep  2 20:40 Makefile
+-rw-r--r-- 1 davidaghassi davidaghassi   663 Sep 14 13:59 output.txt
+-rw-r--r-- 1 davidaghassi davidaghassi  2000 Sep 14 13:59 processes.c
+User time for Process 3: 0.000423 
+System time for Process 3: 0.000423 
+User time for Process 2: 0.000423 
+System time for Process 2: 0.000423 
+Parent uid: 1000 
+Parent euid: 1000 
+Parent gid: 1000 
+Parent egid: 1000 
+Process 9941 exited with status 0 
+Process 9944 exited with status 0 
+Process 9943 exited with status 0 
+Process 9942 exited with status 0 
+User time for Parent Process: 0.000401 
+System time for Parent Process: 0.000401 

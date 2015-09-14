@@ -11,6 +11,7 @@ void runProcess1() {
     printIDs("Process 1");
     printf("(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!\n");
     printTime("Process 1");
+    fflush(NULL);
 }
 
 void runProcess2() {
@@ -21,6 +22,7 @@ void runProcess2() {
     for (i; i < 5; i++) {
         int result = computeBinomial(numbers[i]);
         printf("%d \n", result);
+        fflush(NULL);
         sleep(2);
     }
     printTime("Process 2");
@@ -34,6 +36,7 @@ void runProcess3() {
     for (i; i < 4; i++) {
         int result = computeBinomial(numbers[i]);
         printf("%d \n", result);
+        fflush(NULL);
         sleep(2);
     }
     printTime("Process 3");
@@ -87,4 +90,5 @@ void printTime(char *name) {
     int i = 0;
     for (i; i < LOOP_ITERATIONS; i++) {}
     printUserAndSystemTime(name);
+    fflush(NULL);
 }
