@@ -5,10 +5,12 @@
 // Method declerations
 int factorial(int n);
 int computeBinomial(int n);
+void printTime(char *name);
 
 void runProcess1() {
     printIDs("Process 1");
     printf("(n (n-2)) binomial coefficient computations of integers n=2,3,10, status now!\n");
+    printTime("Process 1");
 }
 
 void runProcess2() {
@@ -21,6 +23,7 @@ void runProcess2() {
         printf("%d \n", result);
         sleep(2);
     }
+    printTime("Process 2");
 }
 
 void runProcess3() {
@@ -33,11 +36,13 @@ void runProcess3() {
         printf("%d \n", result);
         sleep(2);
     }
+    printTime("Process 3");
 }
 
 void runProcess4() {
     printIDs("Process 4");
     execl("/bin/ls", "ls", "-l", NULL);
+    printTime("Process 4");
 }
 
 /**
@@ -75,4 +80,11 @@ int computeBinomial(int n) {
     int nMinusKFactorial = factorial(n-2);
 
     return (nFactorial/(cFactorial*nMinusKFactorial));
+}
+
+void printTime(char *name) {
+    // time function
+    int i = 0;
+    for (i; i < LOOP_ITERATIONS; i++) {}
+    printUserAndSystemTime(name);
 }
