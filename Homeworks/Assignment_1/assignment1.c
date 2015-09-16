@@ -71,5 +71,6 @@ int main(int argc, char const *argv[])
 
     USE EXECVP since exec isn't really a thing anymore.
     */
+    printTime("Parent Process");
     return 0;
 }
