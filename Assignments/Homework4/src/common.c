@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "common.h"
 
 typedef struct node {
@@ -12,7 +13,7 @@ typedef struct node {
  * @param initialAmount the amount to be the first item in the list
  * @return node_t A pointer to the head of the list
  */
-(node_t *) initLinkedList(int initialAmount) {
+node_t * initLinkedList(int initialAmount) {
    node_t *head = NULL;
    head = malloc(sizeof(node_t));
 
@@ -21,7 +22,7 @@ typedef struct node {
       _exit(EXIT_FAILURE);
    }
 
-   head->amounnt = initialAmount;
+   head->amount= initialAmount;
    head->next = NULL;
 
    return head;
@@ -43,7 +44,7 @@ void addToEndOfList(node_t *head, int amountToAdd) {
    }
 
    current->next = malloc(sizeof(node_t));
-   current->next->val = amountToAdd;
+   current->next->amount = amountToAdd;
    current->next->next = NULL;
 
    println("Added %i to end of list", amountToAdd);
@@ -64,7 +65,7 @@ void deleteFirstRequest(node_t **head) {
    }
 
    next_node = (*head)->next;
-   retval = (*head)->val;
+   retval = (*head)->amount;
    free(*head);
    *head = next_node;
 
