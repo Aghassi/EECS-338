@@ -26,6 +26,8 @@ struct shared_data_info {
    int mutex;     // Index for `mutex` semaphore
    int empty;     // Index for `empty` semaphore
    int full;      // Index for `full` semaphore
+   int balance;   // The balance in the account
+   int wCount;    // Number of withdrawers waiting
 };
 
 #endif

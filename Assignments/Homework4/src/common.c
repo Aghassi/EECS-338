@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "common.h"
 
-int wCount = 0;      // Define the number of waiting withdrawers
-int balance = 500;   // Initial balance in account
-
 typedef struct node {
    int amount;       // Amount waiting withdrawer wishes to deposit
    struct node *next;
