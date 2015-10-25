@@ -12,6 +12,11 @@ union semenum {
    struct seminfo *_buf;   // Buffer for IPC_INFO (Linux Specific)
 };
 
+typedef struct node {
+   int amount;       // Amount waiting withdrawer wishes to deposit
+   struct node *next;
+} node_t;
+
 // Wait and signal operations
 // given to `semop`
 #define WAIT -1
@@ -28,6 +33,7 @@ struct shared_data_info {
    int full;      // Index for `full` semaphore
    int balance;   // The balance in the account
    int wCount;    // Number of withdrawers waiting
+   node_t *head;  // Head of the linked list of waiting withdrawers
 };
 
 #endif

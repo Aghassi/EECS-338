@@ -2,11 +2,6 @@
 #include <stdlib.h>
 #include "common.h"
 
-typedef struct node {
-   int amount;       // Amount waiting withdrawer wishes to deposit
-   struct node *next;
-} node_t;
-
 /*
  * Initialize a linked list to house the waiting values to be withdrawn
  *
@@ -22,7 +17,7 @@ node_t * initLinkedList(int initialAmount) {
       _exit(EXIT_FAILURE);
    }
 
-   head->amount= initialAmount;
+   head->amount = initialAmount;
    head->next = NULL;
 
    return head;
@@ -70,4 +65,13 @@ void deleteFirstRequest(node_t **head) {
    *head = next_node;
 
    println("removed amount %i from the from of the list", retval);
+}
+
+/*
+ * Returns the first amount in the linkedList
+ *
+ * @param head the head of the linked list to be used
+ */
+int firstRequestAmount(node_t *head) {
+   return head->amount;
 }
