@@ -25,12 +25,10 @@ typedef struct node {
 // Holds information about shared data
 // Needed by depositers and withdrawers
 struct shared_data_info {
-   int BUF_SIZE;  // Size of shared buffer (in money)
+   int BUF_SIZE;  // Size of shared buffer
    int shmid;     // ID for shared memory
    int semkey;    // ID for semaphore group
    int mutex;     // Index for `mutex` semaphore
-   int empty;     // Index for `empty` semaphore
-   int full;      // Index for `full` semaphore
    int balance;   // The balance in the account
    int wCount;    // Number of withdrawers waiting
    node_t *head;  // Head of the linked list of waiting withdrawers

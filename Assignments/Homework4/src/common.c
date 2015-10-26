@@ -8,7 +8,7 @@
  * @param initialAmount the amount to be the first item in the list
  * @return node_t A pointer to the head of the list
  */
-node_t * initLinkedList(int initialAmount) {
+node_t* initLinkedList(int initialAmount) {
    node_t *head = NULL;
    head = malloc(sizeof(node_t));
 
@@ -50,7 +50,7 @@ void addToEndOfList(node_t *head, int amountToAdd) {
  *
  * @param *head The head of the list to be "popped"/removed
  */
-void deleteFirstRequest(node_t **head) {
+void deleteFirstRequest(struct node **head) {
    int retval = -1;
    node_t * next_node = NULL;
 
@@ -72,6 +72,6 @@ void deleteFirstRequest(node_t **head) {
  *
  * @param head the head of the linked list to be used
  */
-int firstRequestAmount(node_t *head) {
+int firstRequestAmount(struct node *head) {
    return head->amount;
 }

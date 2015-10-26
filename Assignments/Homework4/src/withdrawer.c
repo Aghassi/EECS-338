@@ -70,7 +70,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
 
       // Make withdrawl once we no longer have to wait
       shared.balance = shared.balance - firstRequestAmount(shared.head);
-      deleteFirstRequest(shared.head);
+      deleteFirstRequest(&shared.head);
       shared.wCount = shared.wCount - 1;
       waitNumber = 0;                                 // We no longer need this since we withdrew
 
@@ -89,4 +89,12 @@ void withdrawer(struct shared_data_info shared, int amount) {
          }
       }
    }
+
+   // Detach from the shared memory
+   if(shmdt(account) < 0) {
+      perror("Failed to detatch from shared memory account");
+      _exit(EXIT_FAILURE);
+   }
+
+   _exit(EXIT_SUCCESS);
 }
