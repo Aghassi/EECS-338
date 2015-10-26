@@ -31,6 +31,7 @@ struct shared_data_info {
    int mutex;     // Index for `mutex` semaphore
    int balance;   // The balance in the account
    int wCount;    // Number of withdrawers waiting
+   int wList;     // List of waiting customers who wish to withdraw
    node_t *head;  // Head of the linked list of waiting withdrawers
 };
 

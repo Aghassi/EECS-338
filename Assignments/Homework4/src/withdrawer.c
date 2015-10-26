@@ -13,6 +13,8 @@ void withdrawer(struct shared_data_info shared, int amount) {
    // Define useful semaphore variables
    struct sembuf wait_mutex = {shared.mutex, WAIT, 0};      // for wait(mutex)
    struct sembuf signal_mutex = {shared.mutex, SIGNAL, 0};  // for signal(mutex)
+   struct sembuf wait_wList = {shared.wList, WAIT, 0};      // for wait(wList)
+   struct sembuf signal_wList = {shared.wList, SIGNAL, 0};  // for signal(wList)
 
    // Current spot in queue
    int waitNumber = 0;
@@ -68,11 +70,14 @@ void withdrawer(struct shared_data_info shared, int amount) {
          _exit(EXIT_FAILURE);
       }
 
+      /**** Critical Section Start ****/
       // Make withdrawl once we no longer have to wait
       shared.balance = shared.balance - firstRequestAmount(shared.head);
+
       deleteFirstRequest(&shared.head);
       shared.wCount = shared.wCount - 1;
       waitNumber = 0;                                 // We no longer need this since we withdrew
+      /**** Critical Section End ****/
 
       // If we still have more things waiting, we signal them
       if(shared.wCount > 1 && (firstRequestAmount(shared.head) < shared.balance)) {
