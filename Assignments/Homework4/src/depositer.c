@@ -13,7 +13,6 @@ void depositer(struct shared_data_info shared, int deposit) {
    // Define useful semaphore variables
    struct sembuf wait_mutex = {shared.mutex, WAIT, 0};      // for wait(mutex)
    struct sembuf signal_mutex = {shared.mutex, SIGNAL, 0};  // for signal(mutex)
-   struct sembuf wait_wList = {shared.wList, WAIT, 0};      // for wait(wList)
    struct sembuf signal_wList = {shared.wList, SIGNAL, 0};  // for signal(wList)
 
    // Attach to shared memory
