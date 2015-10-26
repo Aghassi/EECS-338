@@ -9,6 +9,7 @@
 #include "common.c"
 #include "common.h"
 
+
 void withdrawer(struct shared_data_info shared, int amount) {
    // Define useful semaphore variables
    struct sembuf wait_mutex = {shared.mutex, WAIT, 0};      // for wait(mutex)
@@ -53,7 +54,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
       }
       else {
          addToEndOfList(shared.head, amount);
-      }
+     }
 
       // Increment the count and get the position
       shared.wCount = shared.wCount + 1;
