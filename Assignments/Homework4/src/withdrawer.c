@@ -13,8 +13,6 @@ void withdrawer(struct shared_data_info shared, int amount) {
    // Define useful semaphore variables
    struct sembuf wait_mutex = {shared.mutex, WAIT, 0};      // for wait(mutex)
    struct sembuf signal_mutex = {shared.mutex, SIGNAL, 0};  // for signal(mutex)
-   struct sembuf wait_full = {shared.full, WAIT, 0};        // for wait(full) when the bank account hits limit
-   struct sembuf signal_empty = {shared.empty, SIGNAL, 0};
 
    // Current spot in queue
    int waitNumber = 0;
@@ -64,8 +62,31 @@ void withdrawer(struct shared_data_info shared, int amount) {
          perror("failed to signal(mutex) after adding to linked list.");
          _exit(EXIT_FAILURE);
       }
-      // wait for deposit
-      //
-   }
+      // wait for deposit and that it is our turn in line
+      if((semop(shared.semkey, &wait_wList, 1) < 0) && waitNumber == shared.wCount) {
+         perror("failed to wait for wList in withdrawer");
+         _exit(EXIT_FAILURE);
+      }
 
+      // Make withdrawl once we no longer have to wait
+      shared.balance = shared.balance - firstRequestAmount(shared.head);
+      deleteFirstRequest(shared.head);
+      shared.wCount = shared.wCount - 1;
+      waitNumber = 0;                                 // We no longer need this since we withdrew
+
+      // If we still have more things waiting, we signal them
+      if(shared.wCount > 1 && (firstRequestAmount(shared.head) < shared.balance)) {
+         if(semop(shared.semkey, &signal_wList, 1) < 0) {
+            perror("failed to signal wList in withdrawer.");
+            _exit(EXIT_FAILURE);
+         }
+      }
+      else {
+         // This signal is paired with depositing customer's wait(mutex)
+         if(semop(shared.semkey, &signal_mutex, 1) < 0) {
+            perror("failed to signal mutex for withdrawl");
+            _exit(EXIT_FAILURE);
+         }
+      }
+   }
 }
