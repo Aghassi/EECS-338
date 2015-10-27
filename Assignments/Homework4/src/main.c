@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
 #include <sys/wait.h>
 #include <signal.h>
-#include <stdio.h>
 
 #include "common.h"
 #include "depositer.h"
@@ -61,7 +61,7 @@ int main() {
          cleanup(EXIT_FAILURE);
       }
       else if (!depositer_id) {
-         depositer(shared, 50);
+         depositer(shared);
       }
 
       // Fork withdrawer
@@ -110,7 +110,7 @@ int main() {
 void initializeCount(int semkey) {
    // Create uniont structure for counts
    union semun sem_union;
-   unsigned short counters[2]
+   unsigned short counters[2];
    counters[MUTEX] = 1;
    counters[WLIST] = 0;
    sem_union.array = counters;
