@@ -15,7 +15,8 @@
 void initializeCount(int semkey);
 void cleanup(int status);
 
-enum SEMAPHORES {MUTEX = 0, WLIST = 0, NUM_SEM};
+const int BUF_SIZE = 3;
+enum SEMAPHORES {MUTEX = 1, WLIST = 0};
 
 int shmid = -1;
 int semkey = -1;
@@ -26,21 +27,24 @@ int main() {
 
       // Create shared memory segment
       // give it read write permissions 0666
-      shmid = shmget(IPC_PRIVATE, 1, IPC_CREAT | 0666);
+      size_t shmsize = BUF_SIZE;
+      shmid = shmget(IPC_PRIVATE, shmsize, IPC_CREAT | 0666);
       if(shmid < 0) {
          perror("Error getting shared memory");
          cleanup(EXIT_FAILURE);
       }
+      printf("created shared memory \n");
 
       // Get key to private semaphore group
       // with num_sem semaphores in it
       // create read write permissions if necessary
-      semkey = semget(IPC_PRIVATE, NUM_SEM, IPC_CREAT | 0666);
+      semkey = semget(IPC_PRIVATE, 2, IPC_CREAT | 0666);
       if(semkey < 0) {
          perror("Error getting semaphores");
          cleanup(EXIT_FAILURE);
       }
       initializeCount(semkey);
+      printf("created semaphore key \n");
 
       // We setup the shared memory to be shared by the child processes
       // This will be copied to each child process so they can reference it
@@ -54,15 +58,33 @@ int main() {
          .head = NULL   // We have no withdrawers to start with
       };
 
-      // Fork depositer
-      depositer_id = fork();
-      if(depositer_id < 0) {
-         perror("Error forking depositer");
-         cleanup(EXIT_FAILURE);
+      // Attach to shared memory
+      sharedMemory *mem= shmat(shared.shmid, (void *) 0, 0);
+      if(mem < 0) {
+         perror("shmat(shared.shmid, (void *) 0, 0)");
+         _exit(EXIT_FAILURE);
       }
-      else if (!depositer_id) {
-         depositer(shared);
+
+      // Set initial values
+      mem->balance = shared.balance;
+      mem->wCount = shared.wCount;
+
+      // Detach from the shared memory
+      if(shmdt(mem) < 0) {
+         perror("Failed to detatch from shared memory for depositer");
+         _exit(EXIT_FAILURE);
       }
+
+
+      // // Fork depositer
+      // depositer_id = fork();
+      // if(depositer_id < 0) {
+      //    perror("Error forking depositer");
+      //    cleanup(EXIT_FAILURE);
+      // }
+      // else if (!depositer_id) {
+      //    depositer(shared, 50);
+      // }
 
       // Fork withdrawer
       withdrawer_id = fork();
@@ -70,12 +92,26 @@ int main() {
          perror("Error forking withdrawer");
          cleanup(EXIT_FAILURE);
       }
-      else if (!depositer_id) {
-         withdrawer(shared, 50);
+      else if (!withdrawer_id) {
+         // sleep(1)
+         withdrawer(shared, 501);
       }
+
+      // // Fork depositer
+      depositer_id = fork();
+      if(depositer_id < 0) {
+         perror("Error forking depositer");
+         cleanup(EXIT_FAILURE);
+      }
+      else if (!depositer_id) {
+         sleep(3);
+         depositer(shared, 51);
+      }
+
 
       // Wait for children
       int status1, status2;
+      // status3;
       if(wait(&status1) < 0) {
          perror("wait(&status1)");
          cleanup(EXIT_FAILURE);
@@ -84,7 +120,12 @@ int main() {
          perror("wait(&status2)");
          cleanup(EXIT_FAILURE);
       }
+      // if(wait(&status3) < 0) {
+      //    perror("wait(&status2)");
+      //    cleanup(EXIT_FAILURE);
+      // }
       int status = WEXITSTATUS(status1) || WEXITSTATUS(status2);
+       // || WEXITSTATUS(&status3);
 
       // Mark the children as finished
       withdrawer_id = -1;

@@ -5,7 +5,7 @@
  * Create 'semenum' structure
  * (copied from semctl man page)
  */
-union semenum {
+union semun {
    int val;                // Value for SETVAL
    struct semid_ds *buf;   // Buffer for IPC_STAT, IPC_SET
    unsigned short *array;  // Array for GETALL, SETALL
@@ -17,6 +17,11 @@ typedef struct node {
    struct node *next;
 } node_t;
 
+typedef struct sharedMemory {
+   int balance;
+   int wCount;
+} sharedMemory;
+
 // Wait and signal operations
 // given to `semop`
 #define WAIT -1
@@ -25,7 +30,6 @@ typedef struct node {
 // Holds information about shared data
 // Needed by depositers and withdrawers
 struct shared_data_info {
-   int BUF_SIZE;  // Size of shared buffer
    int shmid;     // ID for shared memory
    int semkey;    // ID for semaphore group
    int mutex;     // Index for `mutex` semaphore
@@ -34,5 +38,14 @@ struct shared_data_info {
    int wList;     // List of waiting customers who wish to withdraw
    node_t *head;  // Head of the linked list of waiting withdrawers
 };
+
+node_t* initLinkedList(int initialAmount);
+
+void addToEndOfList(node_t *head, int amountToAdd);
+
+void deleteFirstRequest(struct node **head);
+
+int firstRequestAmount(struct node *head);
+
 
 #endif
