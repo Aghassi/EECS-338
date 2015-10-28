@@ -1,0 +1,57 @@
+created shared memory 
+created semaphore key 
+
+PID 6836 ready to deposit 411!
+Balance before deposit for pid 6836 is: 1000 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6836 is: 1411 
+
+PID 6837 ready to withdraw: 370!
+Balance before wtihdrawl for pid 6837 is: 1411 
+The balance after withdrawl for pid 6837 is 1041 
+wCount after PID 6837 is 0 
+
+PID 6841 ready to deposit 245!
+Balance before deposit for pid 6841 is: 1041 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6841 is: 1286 
+
+PID 6842 ready to withdraw: 115!
+Balance before wtihdrawl for pid 6842 is: 1286 
+The balance after withdrawl for pid 6842 is 1171 
+wCount after PID 6842 is 0 
+
+PID 6843 ready to deposit 330!
+Balance before deposit for pid 6843 is: 1171 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6843 is: 1501 
+
+PID 6844 ready to withdraw: 212!
+Balance before wtihdrawl for pid 6844 is: 1501 
+The balance after withdrawl for pid 6844 is 1289 
+wCount after PID 6844 is 0 
+
+PID 6845 ready to deposit 362!
+Balance before deposit for pid 6845 is: 1289 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6845 is: 1651 
+
+PID 6846 ready to withdraw: 365!
+Balance before wtihdrawl for pid 6846 is: 1651 
+The balance after withdrawl for pid 6846 is 1286 
+wCount after PID 6846 is 0 
+
+PID 6847 ready to deposit 403!
+Balance before deposit for pid 6847 is: 1286 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6847 is: 1689 
+
+PID 6848 ready to withdraw: 113!
+Balance before wtihdrawl for pid 6848 is: 1689 
+The balance after withdrawl for pid 6848 is 1576 
+wCount after PID 6848 is 0 
+
+PID 6849 ready to deposit 1000!
+Balance before deposit for pid 6849 is: 1576 
+The current withdrawl amount waiting is 0 
+Balance after deposit for pid 6849 is: 2576 
