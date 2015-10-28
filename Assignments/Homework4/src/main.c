@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
+#include <time.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -75,9 +76,10 @@ int main() {
       }
 
       int i = 0;
+      srand(time(NULL));
       int randAmount = 0;
       for (i = 0; i < 10; i++) {
-         randAmount = rand() % 999;
+         randAmount = rand() % 500;
          if(i%2) {
             // Fork withdrawer
             withdrawer_id = fork();
@@ -102,7 +104,7 @@ int main() {
             }
          }
          printf("\n");
-         sleep(1);  
+         sleep(2);  
       }
       // Fork depositer
       // We always make sure to do this so we
