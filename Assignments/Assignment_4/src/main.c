@@ -131,6 +131,8 @@ int main() {
       
 
       // Wait for children
+      // If NUM_PROCESSES changes, more statuses need to be
+      // added here.
       int status1, status2, status3, status4, status5,
        status6, status7, status8, status9, status10,
        status11;
