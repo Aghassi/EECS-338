@@ -16,7 +16,7 @@
 void initializeCount(int semkey);
 void cleanup(int status);
 
-const int BUF_SIZE = 3;
+const int BUF_SIZE = 3;                // Size of shared memory in bytes
 enum SEMAPHORES {MUTEX = 1, WLIST = 0};
 
 int shmid = -1;
@@ -58,7 +58,7 @@ int main() {
          .balance = 1000
       };
 
-      // Attach to shared memory
+      // Attach to shared memory so we can set initial values
       sharedMemory *mem= shmat(shared.shmid, (void *) 0, 0);
       if(mem < 0) {
          perror("shmat(shared.shmid, (void *) 0, 0)");
@@ -69,16 +69,23 @@ int main() {
       mem->balance = shared.balance;
       mem->wCount = shared.wCount;
 
-      // Detach from the shared memory
+      // Detach from the shared memory once initial values are set
       if(shmdt(mem) < 0) {
          perror("Failed to detatch from shared memory for depositer");
          _exit(EXIT_FAILURE);
       }
 
+      // Initialize a count
+      // setup the random integer generator
+      // initialize random variable
       int i = 0;
       srand(time(NULL));
       int randAmount = 0;
-      for (i = 0; i < 10; i++) {
+
+      // Create a random number for each child process
+      // if the process is an even integer, we created a withdrawer
+      // if the process is odd, we create a depositer
+      for (i = 0; i < NUM_PROCESSES; i++) {
          randAmount = rand() % 500;
          if(i%2) {
             // Fork withdrawer
@@ -103,6 +110,7 @@ int main() {
                depositer(shared, randAmount);
             }
          }
+         // This is here to make output more legible
          printf("\n");
          sleep(2);  
       }

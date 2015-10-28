@@ -15,11 +15,12 @@ void depositer(struct shared_data_info shared, int deposit) {
    struct sembuf signal_wList = {shared.wList, SIGNAL, 0};  // for signal(wList)
 
    printf("PID %i ready to deposit %i!\n", getpid(), deposit);
+
    // Attach to shared memory
    // since `shmat` returns a pointer to the data,
    // we can treat it however we want
-   // here we make it a struct that we define to have
-   // balance and wCount in it
+   // here we make it an version of our shared memory struct
+   // This struct contains balance and wCount
    sharedMemory *mem= shmat(shared.shmid, (void *) 0, 0);
    if(mem < 0) {
       perror("shmat(shared.shmid, (void *) 0, 0)");
@@ -51,6 +52,7 @@ void depositer(struct shared_data_info shared, int deposit) {
          _exit(EXIT_FAILURE);
       }
    }
+   // If the next withdrawl is greater than balance, we signal it
    else if(currentWithdrawl > mem->balance) {
       if(semop(shared.semkey, &signal_mutex, 1) < 0) {
          perror("signal(mutex) for deposit failed");

@@ -17,11 +17,12 @@ void withdrawer(struct shared_data_info shared, int amount) {
    struct sembuf signal_wList = {shared.wList, SIGNAL, 0};  // for signal(wList)
 
    printf("PID %i ready to withdraw: %i!\n", getpid(), amount);
+
    // Attach to shared memory
    // since `shmat` returns a pointer to the data,
    // we can treat it however we want
-   // here we make it an int since an account has money
-   // in it, which we think of as ints
+   // here we make it an version of our shared memory struct
+   // This struct contains balance and wCount
    sharedMemory *mem= shmat(shared.shmid, (void *) 0, 0);
    if(mem < 0) {
       perror("shmat(shared.shmid, (void *) 0, 0)");
@@ -48,9 +49,10 @@ void withdrawer(struct shared_data_info shared, int amount) {
    
    // We have to wait until we can withdraw
    else {
-      // Increment the count and get the position
+      // Increment the count and get the position of next withdrawl
       mem->wCount = mem->wCount + 1;
       mem->orderOfWithdrawls[mem->wCount] = amount;
+
       // signal(mutex)
       if(semop(shared.semkey, &signal_mutex, 1) < 0) {
          perror("failed to signal(mutex) after adding to linked list.");
@@ -70,7 +72,8 @@ void withdrawer(struct shared_data_info shared, int amount) {
       mem->wCount = mem->wCount - 1;
       /**** Critical Section End ****/
 
-      // If we still have more things waiting, we signal them
+      // If we still have more things waiting, and we can withdraw,
+      // we signal them
       if(shared.wCount > 1 && mem->balance > 0) { 
          if(semop(shared.semkey, &signal_wList, 1) < 0) {
             perror("failed to signal wList in withdrawer.");
@@ -88,6 +91,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
 
    printf("The balance after withdrawl for pid %i is %i \n", getpid(), mem->balance);
    printf("wCount after PID %i is %i \n", getpid(), mem->wCount);
+
    // Detach from the shared memory
    if(shmdt(mem) < 0) {
       perror("Failed to detatch from shared memory account");
