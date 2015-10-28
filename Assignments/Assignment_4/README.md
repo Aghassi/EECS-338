@@ -25,3 +25,6 @@ to build application
 ### RUNNING:
 First, build application and then run with
 > ./main
+
+Each run of the application will be different as the values
+are randomly generated each time.
