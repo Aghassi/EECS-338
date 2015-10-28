@@ -54,7 +54,7 @@ int main() {
          .mutex = MUTEX,
          .wList = WLIST,
          .wCount = 0,
-         .balance = 500
+         .balance = 1000
       };
 
       // Attach to shared memory
@@ -74,37 +74,39 @@ int main() {
          _exit(EXIT_FAILURE);
       }
 
-
-      // // Fork depositer
-      // depositer_id = fork();
-      // if(depositer_id < 0) {
-      //    perror("Error forking depositer");
-      //    cleanup(EXIT_FAILURE);
-      // }
-      // else if (!depositer_id) {
-      //    depositer(shared, 50);
-      // }
-
-      // Fork withdrawer
-      withdrawer_id = fork();
-      if(withdrawer_id < 0) {
-         perror("Error forking withdrawer");
-         cleanup(EXIT_FAILURE);
+      int i = 0;
+      int randAmount = 0;
+      for (i = 0; i < 10; i++) {
+         randAmount = rand() % 999;
+         if(i%2) {
+            // Fork withdrawer
+            withdrawer_id = fork();
+            if(withdrawer_id < 0) {
+              perror("Error forking withdrawer");
+              cleanup(EXIT_FAILURE);
+            }
+            else if (!withdrawer_id) {
+              withdrawer(shared, randAmount);
+            } 
+         }
+         else {
+            // Fork depositer
+            depositer_id = fork();
+            if(depositer_id < 0) {
+               perror("Error forking depositer");
+               cleanup(EXIT_FAILURE);
+            }
+            else if (!depositer_id) {
+               sleep(1);
+               depositer(shared, randAmount);
+            }
+         }
+         printf("\n");
+         sleep(1);  
       }
-      else if (!withdrawer_id) {
-         withdrawer(shared, 501);
-      }
-      withdrawer_id = fork();
-      if(withdrawer_id < 0) {
-         perror("Error forking withdrawer");
-         cleanup(EXIT_FAILURE);
-      }
-      else if (!withdrawer_id) {
-         sleep(2);
-         withdrawer(shared, 49);
-      }
-
-      // // Fork depositer
+      // Fork depositer
+      // We always make sure to do this so we
+      // don't have any lingering withdrawls
       depositer_id = fork();
       if(depositer_id < 0) {
          perror("Error forking depositer");
@@ -112,12 +114,16 @@ int main() {
       }
       else if (!depositer_id) {
          sleep(1);
-         depositer(shared, 51);
+         depositer(shared, 1000);
       }
+      printf("\n");
 
+      
 
       // Wait for children
-      int status1, status2, status3;
+      int status1, status2, status3, status4, status5,
+       status6, status7, status8, status9, status10,
+       status11;
       if(wait(&status1) < 0) {
          perror("wait(&status1)");
          cleanup(EXIT_FAILURE);
@@ -130,7 +136,49 @@ int main() {
          perror("wait(&status2)");
          cleanup(EXIT_FAILURE);
       }
-      int status = WEXITSTATUS(status1) || WEXITSTATUS(status2) || WEXITSTATUS(&status3);
+      if(wait(&status4) < 0) {
+         perror("wait(&status4)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status5) < 0) {
+         perror("wait(&status5)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status6) < 0) {
+         perror("wait(&status6)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status7) < 0) {
+         perror("wait(&status7)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status8) < 0) {
+         perror("wait(&status8)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status9) < 0) {
+         perror("wait(&status9)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status10) < 0) {
+         perror("wait(&status10)");
+         cleanup(EXIT_FAILURE);
+      }
+      if(wait(&status11) < 0) {
+         perror("wait(&status11)");
+         cleanup(EXIT_FAILURE);
+      }
+      int status = WEXITSTATUS(status1) || 
+      WEXITSTATUS(status2) || 
+      WEXITSTATUS(status3) || 
+      WEXITSTATUS(status4) || 
+      WEXITSTATUS(status5) || 
+      WEXITSTATUS(status6) ||
+      WEXITSTATUS(status7) || 
+      WEXITSTATUS(status8) || 
+      WEXITSTATUS(status9) || 
+      WEXITSTATUS(status10)||
+      WEXITSTATUS(status11);
 
       // Mark the children as finished
       withdrawer_id = -1;

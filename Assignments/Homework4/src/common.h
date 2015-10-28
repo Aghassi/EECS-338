@@ -15,6 +15,7 @@ union semun {
 typedef struct sharedMemory {
    int balance;
    int wCount;
+   int orderOfWithdrawls[5];
 } sharedMemory;
 
 // Wait and signal operations

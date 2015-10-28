@@ -16,6 +16,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
    struct sembuf wait_wList = {shared.wList, WAIT, 0};      // for wait(wList)
    struct sembuf signal_wList = {shared.wList, SIGNAL, 0};  // for signal(wList)
 
+   printf("PID %i ready to withdraw: %i!\n", getpid(), amount);
    // Attach to shared memory
    // since `shmat` returns a pointer to the data,
    // we can treat it however we want
@@ -27,7 +28,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
       _exit(EXIT_FAILURE);
    }
 
-   printf("The balance before withdrawl is %i \n", mem->balance);
+   printf("Balance before wtihdrawl for pid %i is: %i \n", getpid(), mem->balance);
 
    // Check for wait(mutex)
    if(semop(shared.semkey, &wait_mutex, 1) < 0 ) {
@@ -49,7 +50,7 @@ void withdrawer(struct shared_data_info shared, int amount) {
    else {
       // Increment the count and get the position
       mem->wCount = mem->wCount + 1;
-
+      mem->orderOfWithdrawls[mem->wCount] = amount;
       // signal(mutex)
       if(semop(shared.semkey, &signal_mutex, 1) < 0) {
          perror("failed to signal(mutex) after adding to linked list.");
@@ -57,18 +58,18 @@ void withdrawer(struct shared_data_info shared, int amount) {
       }
 
       // wait for deposit and that it is our turn in line
-      if((semop(shared.semkey, &wait_wList, 1) < 0) && mem->wCount > 0) {
+      if((semop(shared.semkey, &wait_wList, 1) < 0) && amount <= mem->balance) {
          perror("failed to wait for wList in withdrawer");
          _exit(EXIT_FAILURE);
       }
 
       /**** Critical Section Start ****/
       // Make withdrawl once we no longer have to wait
+      mem->orderOfWithdrawls[mem->wCount] = 0;
       mem->balance = mem->balance - amount;
       mem->wCount = mem->wCount - 1;
       /**** Critical Section End ****/
 
-      printf("Balance decremented, wCount is now %i \n", mem->wCount);
       // If we still have more things waiting, we signal them
       if(shared.wCount > 1 && mem->balance > 0) { 
          if(semop(shared.semkey, &signal_wList, 1) < 0) {
@@ -85,7 +86,8 @@ void withdrawer(struct shared_data_info shared, int amount) {
       }
    }
 
-   printf("The balance after withdrawl is %i \n", mem->balance);
+   printf("The balance after withdrawl for pid %i is %i \n", getpid(), mem->balance);
+   printf("wCount after PID %i is %i \n", getpid(), mem->wCount);
    // Detach from the shared memory
    if(shmdt(mem) < 0) {
       perror("Failed to detatch from shared memory account");
