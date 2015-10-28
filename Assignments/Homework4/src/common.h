@@ -12,11 +12,6 @@ union semun {
    struct seminfo *_buf;   // Buffer for IPC_INFO (Linux Specific)
 };
 
-typedef struct node {
-   int amount;       // Amount waiting withdrawer wishes to deposit
-   struct node *next;
-} node_t;
-
 typedef struct sharedMemory {
    int balance;
    int wCount;
@@ -35,17 +30,6 @@ struct shared_data_info {
    int mutex;     // Index for `mutex` semaphore
    int balance;   // The balance in the account
    int wCount;    // Number of withdrawers waiting
-   int wList;     // List of waiting customers who wish to withdraw
-   node_t *head;  // Head of the linked list of waiting withdrawers
+   int wList;     // waiting list semeaphore
 };
-
-node_t* initLinkedList(int initialAmount);
-
-void addToEndOfList(node_t *head, int amountToAdd);
-
-void deleteFirstRequest(struct node **head);
-
-int firstRequestAmount(struct node *head);
-
-
 #endif

@@ -54,8 +54,7 @@ int main() {
          .mutex = MUTEX,
          .wList = WLIST,
          .wCount = 0,
-         .balance = 500,
-         .head = NULL   // We have no withdrawers to start with
+         .balance = 500
       };
 
       // Attach to shared memory
@@ -93,8 +92,16 @@ int main() {
          cleanup(EXIT_FAILURE);
       }
       else if (!withdrawer_id) {
-         // sleep(1)
          withdrawer(shared, 501);
+      }
+      withdrawer_id = fork();
+      if(withdrawer_id < 0) {
+         perror("Error forking withdrawer");
+         cleanup(EXIT_FAILURE);
+      }
+      else if (!withdrawer_id) {
+         sleep(2);
+         withdrawer(shared, 49);
       }
 
       // // Fork depositer
@@ -104,14 +111,13 @@ int main() {
          cleanup(EXIT_FAILURE);
       }
       else if (!depositer_id) {
-         sleep(3);
+         sleep(1);
          depositer(shared, 51);
       }
 
 
       // Wait for children
-      int status1, status2;
-      // status3;
+      int status1, status2, status3;
       if(wait(&status1) < 0) {
          perror("wait(&status1)");
          cleanup(EXIT_FAILURE);
@@ -120,12 +126,11 @@ int main() {
          perror("wait(&status2)");
          cleanup(EXIT_FAILURE);
       }
-      // if(wait(&status3) < 0) {
-      //    perror("wait(&status2)");
-      //    cleanup(EXIT_FAILURE);
-      // }
-      int status = WEXITSTATUS(status1) || WEXITSTATUS(status2);
-       // || WEXITSTATUS(&status3);
+      if(wait(&status3) < 0) {
+         perror("wait(&status2)");
+         cleanup(EXIT_FAILURE);
+      }
+      int status = WEXITSTATUS(status1) || WEXITSTATUS(status2) || WEXITSTATUS(&status3);
 
       // Mark the children as finished
       withdrawer_id = -1;

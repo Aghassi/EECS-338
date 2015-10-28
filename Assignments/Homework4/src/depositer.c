@@ -33,7 +33,7 @@ void depositer(struct shared_data_info shared, int deposit) {
       _exit(EXIT_FAILURE);
    }
 
-  printf("Balance is: %i \n", mem->balance);
+  printf("Balance before deposit is: %i \n", mem->balance);
 
    // Deposit money in account
    mem->balance = mem->balance + deposit;
@@ -45,24 +45,15 @@ void depositer(struct shared_data_info shared, int deposit) {
          _exit(EXIT_FAILURE);
       }
    }
-   // else if(firstRequestAmount(shared.head) > shared.balance) {
-   //    // Otherwise, if the requested amount is greater than the balance we have,
-   //    // we signal the mutex
-   //    if(semop(shared.semkey, &signal_mutex, 1) < 0) {
-   //       perror("signal(mutex) for deposit failed");
-   //       _exit(EXIT_FAILURE);
-   //    }
-   // }
    else {
       // If we do have withdrawers waiting, we signal them
-      printf("We signal wList \n");
       if(semop(shared.semkey, &signal_wList, 1) < 0) {
          perror("failed to signal wList in withdrawer.");
          _exit(EXIT_FAILURE);
       }
    }
 
-   printf("Balance is: %i \n", mem->balance);
+   printf("Balance after deposit is: %i \n", mem->balance);
 
    // Detach from the shared memory
    if(shmdt(mem) < 0) {
