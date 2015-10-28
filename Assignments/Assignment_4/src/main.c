@@ -131,66 +131,21 @@ int main() {
       
 
       // Wait for children
-      // If NUM_PROCESSES changes, more statuses need to be
-      // added here.
-      int status1, status2, status3, status4, status5,
-       status6, status7, status8, status9, status10,
-       status11;
-      if(wait(&status1) < 0) {
-         perror("wait(&status1)");
-         cleanup(EXIT_FAILURE);
+      // Waits on NUM_PROCESSES + 1 (since we always
+      // have one more depositer)
+      // Will report status
+      int statuses[NUM_PROCESSES + 1];
+      int n, sti;
+      for (n = 0; n < NUM_PROCESSES + 1; n++) {
+         if(wait(&statuses[n]) < 0) {
+            perror("wait(&status[n])");
+            cleanup(EXIT_FAILURE);
+         }   
       }
-      if(wait(&status2) < 0) {
-         perror("wait(&status2)");
-         cleanup(EXIT_FAILURE);
+      int status;
+      for (sti = 0; sti < NUM_PROCESSES + 1; sti++) {
+         status = status || WEXITSTATUS(statuses[sti]);
       }
-      if(wait(&status3) < 0) {
-         perror("wait(&status2)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status4) < 0) {
-         perror("wait(&status4)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status5) < 0) {
-         perror("wait(&status5)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status6) < 0) {
-         perror("wait(&status6)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status7) < 0) {
-         perror("wait(&status7)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status8) < 0) {
-         perror("wait(&status8)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status9) < 0) {
-         perror("wait(&status9)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status10) < 0) {
-         perror("wait(&status10)");
-         cleanup(EXIT_FAILURE);
-      }
-      if(wait(&status11) < 0) {
-         perror("wait(&status11)");
-         cleanup(EXIT_FAILURE);
-      }
-      int status = WEXITSTATUS(status1) || 
-      WEXITSTATUS(status2) || 
-      WEXITSTATUS(status3) || 
-      WEXITSTATUS(status4) || 
-      WEXITSTATUS(status5) || 
-      WEXITSTATUS(status6) ||
-      WEXITSTATUS(status7) || 
-      WEXITSTATUS(status8) || 
-      WEXITSTATUS(status9) || 
-      WEXITSTATUS(status10)||
-      WEXITSTATUS(status11);
 
       // Mark the children as finished
       withdrawer_id = -1;
