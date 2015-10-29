@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/syscall.h>
 #include <sys/types.h>
+#include <signal.h>
 #include <unistd.h>
 #include <pthread.h>
 #include <semaphore.h>
@@ -8,7 +10,8 @@
 #include "common.h"
 
 void *reader(void *shared_data) {
-   printf("%i: entering thread.", gettid());
+   pid_t tid = syscall(SYS_gettid);
+   printf("%i: entering thread.", tid);
 
    // get the shared data
    struct shared_data *shared = (struct shared_data *)shared_data;
@@ -57,7 +60,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("%i: has read!", getpid());
+   printf("%i: has read!", tid);
 
    // wait mutex
    if(sem_wait(shared->mutex) == -1) {
@@ -80,7 +83,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("%i: exiting thread.", gettid());
+   printf("%i: exiting thread.", tid);
 
    pthread_exit(NULL);
 }

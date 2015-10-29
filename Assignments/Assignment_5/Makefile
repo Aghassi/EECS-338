@@ -1,7 +1,7 @@
 CC = gcc
 # -g : allows use of GNU Debugger
 # -Wall : show all warnings
-FLAGS = -g -Wall -Werror
+FLAGS = -g -Wall -Werror -pthread
 LIBS = # None yet...
 SOURCE = reader.c writer.c main.c
 OUTPUT = main
