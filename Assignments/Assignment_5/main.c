@@ -20,7 +20,7 @@ struct shared_data shared;
 int main() {
    // Create our threads for readers and writers
    pthread_t readerThread;
-   pthread_t writerThread;
+   //  pthread_t writerThread;
 
    // Create thread attirbute and status
    pthread_attr_t attr;
