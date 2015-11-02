@@ -8,6 +8,8 @@
 #include "common.h"
 
 void *reader(void *shared_data) {
+   printf("%i: entering thread.", gettid());
+
    // get the shared data
    struct shared_data *shared = (struct shared_data *)shared_data;
 
@@ -25,7 +27,7 @@ void *reader(void *shared_data) {
 
    // check if we have writers waiting
    if(shared->nWriters > 0) {
-      shared->rBlocked = true;
+      shared->RBlocked = true;
 
       // signal mutex
       if(sem_post(shared->mutex) == -1) {
@@ -34,9 +36,9 @@ void *reader(void *shared_data) {
       }
 
       // wait for reader
-      if(sem_wait(shared->reader) == -1) {
+      if(sem_wait(shared->sem_reader) == -1) {
          perror("failed to wait for reader in reader");
-         pthread_ext(NULL);
+         pthread_exit(NULL);
       }
    }
    else {
@@ -55,7 +57,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("Process %i has read!", getpid());
+   printf("%i: has read!", getpid());
 
    // wait mutex
    if(sem_wait(shared->mutex) == -1) {
@@ -66,7 +68,7 @@ void *reader(void *shared_data) {
    shared->nReaders--;
    if(shared->nReaders == 0 && shared->nWriters > 0) {
       // signal mutex for writer
-      if(sem_post(shared->writer) == -1) {
+      if(sem_post(shared->sem_writer) == -1) {
          perror("Failed to signal writer in reader");
          pthread_exit(NULL);
       }
@@ -77,6 +79,8 @@ void *reader(void *shared_data) {
       perror("failed to signal mutex in reader");
       pthread_exit(NULL);
    }
+
+   printf("%i: exiting thread.", gettid());
 
    pthread_exit(NULL);
 }

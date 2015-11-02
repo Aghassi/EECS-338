@@ -3,7 +3,7 @@ CC = gcc
 # -Wall : show all warnings
 FLAGS = -g -Wall -Werror
 LIBS = # None yet...
-SOURCE = depositer.c withdrawer.c main.c
+SOURCE = reader.c writer.c main.c
 OUTPUT = main
 
 all: $(SOURCE)
