@@ -23,7 +23,6 @@ void *reader(void *shared_data) {
    }
 
    shared->nReaders++;
-   printf("nReaders is : %i \n", shared->nReaders);
 
    if(shared->nReaders == 1) {
       // wait writer
@@ -64,6 +63,7 @@ void *reader(void *shared_data) {
    }
 
    printf("%i: exiting thread. \n", tid);
+   printf("\n");
 
    pthread_exit(NULL);
 }

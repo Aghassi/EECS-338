@@ -30,6 +30,7 @@ void *writer(void *shared_data) {
     }
 
    printf("%i: exiting thread. \n", tid);
+   printf("\n");
 
    pthread_exit(NULL);
 }

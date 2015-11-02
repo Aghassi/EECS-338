@@ -17,8 +17,7 @@ struct shared_data shared;
 
 int main() {
    // Create our threads for readers and writers
-   pthread_t readerThread;
-   pthread_t writerThread;
+   pthread_t threads[NUM_THREADS];
 
    // status variable for returning how program ran
    void *status;
@@ -31,28 +30,32 @@ int main() {
       .nReaders = 0
    };
 
-   // Fork reader
-   if(pthread_create(&readerThread, NULL, reader, (void *)&shared) == -1) {
-         perror("pthread_create(readerThread)");
-         exit(EXIT_FAILURE);
-   }
-   sleep(2);
+   int i;
+   for (i = 0; i < NUM_THREADS; i++)
+   {
+      if (i%2 == 0) {
+         // Fork writer
+         if(pthread_create(&threads[i], NULL, writer, (void *)&shared) == -1) {
+               perror("pthread_create(writerThread)");
+               exit(EXIT_FAILURE);
+         }
+      }
+      else {
+         // Fork reader
+         if(pthread_create(&threads[i], NULL, reader, (void *)&shared) == -1) {
+               perror("pthread_create(readerThread)");
+               exit(EXIT_FAILURE);
+         }
+      }
+   }  
 
-   // Fork writer
-   if(pthread_create(&writerThread, NULL, writer, (void *)&shared) == -1) {
-         perror("pthread_create(writerThread)");
+   for (i = 0; i < NUM_THREADS; i++)
+   {
+      // Wait for children
+      if(pthread_join(threads[i], &status) == -1) {
+         perror("pthread_join(thread)");
          exit(EXIT_FAILURE);
-   }
-
-   // Wait for children
-   if(pthread_join(writerThread, &status) == -1) {
-      perror("pthread_join(writerThread)");
-      exit(EXIT_FAILURE);
-   }
-   // Wait for children
-   if(pthread_join(readerThread, &status) == -1) {
-      perror("pthread_join(readerThread)");
-      exit(EXIT_FAILURE);
+      }
    }
 
    return EXIT_SUCCESS;
@@ -70,4 +73,5 @@ void initCounts() {
       exit(EXIT_FAILURE);
    }
    printf("All semaphores initialized\n");
+   printf("\n");
 }
