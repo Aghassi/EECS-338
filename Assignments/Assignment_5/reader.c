@@ -23,6 +23,7 @@ void *reader(void *shared_data) {
    }
 
    shared->nReaders++;
+   printf("nReaders is : %i \n", shared->nReaders);
 
    if(shared->nReaders == 1) {
       // wait writer
