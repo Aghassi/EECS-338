@@ -11,8 +11,6 @@
 
 void initCounts();
 
-// POSIX Semaphores
-sem_t mutex, readerMutex, sem_reader, sem_writer;
 
 // Shared memory
 struct shared_data shared;
@@ -30,14 +28,8 @@ int main() {
 
    // Setting up shared data
    struct shared_data shared = {
-      .mutex = &mutex,
-      .readerMutex = &readerMutex,
-      .sem_reader = &sem_reader,
-      .sem_writer = &sem_writer,
       .nReaders = 0,
-      .nWriters = 0,
-      .busy = false,
-      .RBlocked = false
+      .nWriters = 0
    };
 
    // Fork reader
@@ -72,14 +64,6 @@ int main() {
 void initCounts() {
    if(sem_init(&mutex, 0, 1) < 0) {
       perror("sem_init(&mutex)");
-      exit(EXIT_FAILURE);
-   }
-   if(sem_init(&readerMutex, 0, 0) < 0) {
-      perror("sem_init(&readerMutex)");
-      exit(EXIT_FAILURE);
-   }
-   if(sem_init(&sem_reader, 0, 0) < 0) {
-      perror("sem_init(&reader)");
       exit(EXIT_FAILURE);
    }
    if(sem_init(&sem_writer, 0, 0) < 0) {
