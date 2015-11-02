@@ -75,7 +75,7 @@ void *reader(void *shared_data) {
    }
 
    // signal mutex
-   if(sem_signal(shared->mutex) == -1) {
+   if(sem_post(shared->mutex) == -1) {
       perror("failed to signal mutex in reader");
       pthread_exit(NULL);
    }

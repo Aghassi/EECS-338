@@ -67,15 +67,15 @@ void initCounts() {
       perror("sem_init(&mutex)");
       exit(EXIT_FAILURE);
    }
-   if(sem_init(&readerMutex, 0, 1) < 0) {
+   if(sem_init(&readerMutex, 0, 0) < 0) {
       perror("sem_init(&readerMutex)");
       exit(EXIT_FAILURE);
    }
-   if(sem_init(&sem_reader, 0, 1) < 0) {
+   if(sem_init(&sem_reader, 0, 0) < 0) {
       perror("sem_init(&reader)");
       exit(EXIT_FAILURE);
    }
-   if(sem_init(&sem_writer, 0, 1) < 0) {
+   if(sem_init(&sem_writer, 0, 0) < 0) {
       perror("sem_init(&writer)");
       exit(EXIT_FAILURE);
    }
