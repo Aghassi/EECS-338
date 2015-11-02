@@ -20,15 +20,10 @@ struct shared_data shared;
 int main() {
    // Create our threads for readers and writers
    pthread_t readerThread;
-   //  pthread_t writerThread;
+   pthread_t writerThread;
 
-   // Create thread attirbute and status
-   pthread_attr_t attr;
+   // status variable for returning how program ran
    void *status;
-
-   // Creating a set of attributes to send to the thread
-   pthread_attr_init(&attr);
-   pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
 
    // Init semaphore counts
    initCounts();
@@ -46,11 +41,23 @@ int main() {
    };
 
    // Fork reader
-   if(pthread_create(&readerThread, &attr, reader, (void *)&shared) == -1) {
+   if(pthread_create(&readerThread, NULL, reader, (void *)&shared) == -1) {
          perror("pthread_create(readerThread)");
          exit(EXIT_FAILURE);
    }
+   sleep(2);
 
+   // Fork writer
+   if(pthread_create(&writerThread, NULL, writer, (void *)&shared) == -1) {
+         perror("pthread_create(writerThread)");
+         exit(EXIT_FAILURE);
+   }
+   
+   // Wait for children
+   if(pthread_join(writerThread, &status) == -1) {
+      perror("pthread_join(writerThread)");
+      exit(EXIT_FAILURE);
+   }
    // Wait for children
    if(pthread_join(readerThread, &status) == -1) {
       perror("pthread_join(readerThread)");
@@ -79,4 +86,5 @@ void initCounts() {
       perror("sem_init(&writer)");
       exit(EXIT_FAILURE);
    }
+   printf("All semaphores initialized\n");
 }

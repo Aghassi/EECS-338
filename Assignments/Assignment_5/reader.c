@@ -11,7 +11,7 @@
 
 void *reader(void *shared_data) {
    pid_t tid = syscall(SYS_gettid);
-   printf("%i: entering thread.", tid);
+   printf("%i: entering thread. \n", tid);
 
    // get the shared data
    struct shared_data *shared = (struct shared_data *)shared_data;
@@ -60,7 +60,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("%i: has read!", tid);
+   printf("%i: has read! \n", tid);
 
    // wait mutex
    if(sem_wait(shared->mutex) == -1) {
@@ -83,7 +83,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("%i: exiting thread.", tid);
+   printf("%i: exiting thread. \n", tid);
 
    pthread_exit(NULL);
 }
