@@ -6,7 +6,7 @@
 // POSIX Semaphores
 sem_t mutex, sem_reader, sem_writer;
 
-#define NUM_THREADS 10
+#define NUM_THREADS 100
 
 // Holds information about the shared data
 // needed by readers and writers

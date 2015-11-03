@@ -12,6 +12,7 @@
 void *reader(void *shared_data) {
    pid_t tid = syscall(SYS_gettid);
    printf("%i: entering reader thread. \n", tid);
+   fflush(stdout);
 
    // get the shared data
    struct shared_data *shared = (struct shared_data *)shared_data;
@@ -39,6 +40,8 @@ void *reader(void *shared_data) {
 
    /**** Critical Section ****/
    printf("%i: has read! \n", tid);
+   fflush(stdout);
+
    /**** End Critical Section ****/
 
    // wait mutex
@@ -64,6 +67,7 @@ void *reader(void *shared_data) {
 
    printf("%i: exiting reader thread. \n", tid);
    printf("\n");
+   fflush(stdout);
 
    pthread_exit(NULL);
 }

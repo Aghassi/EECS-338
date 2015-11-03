@@ -12,6 +12,8 @@
 void *writer(void *shared_data) {
    pid_t tid = syscall(SYS_gettid);
    printf("%i: entering writer thread. \n", tid);
+   fflush(stdout);
+
 
    // wait writer
    if(sem_wait(&sem_writer) == -1) {
@@ -21,6 +23,7 @@ void *writer(void *shared_data) {
 
    /**** Critical Section ****/
    printf("%i: has written! \n", tid);
+   fflush(stdout);
    /**** End Critical Section ****/
 
    // signal writer
@@ -31,6 +34,7 @@ void *writer(void *shared_data) {
 
    printf("%i: exiting writer thread. \n", tid);
    printf("\n");
+   fflush(stdout);
 
    pthread_exit(NULL);
 }
