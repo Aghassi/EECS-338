@@ -11,7 +11,7 @@
 
 void *writer(void *shared_data) {
    pid_t tid = syscall(SYS_gettid);
-   printf("%i: entering thread. \n", tid);
+   printf("%i: entering writer thread. \n", tid);
 
    // wait writer
    if(sem_wait(&sem_writer) == -1) {
@@ -29,7 +29,7 @@ void *writer(void *shared_data) {
        pthread_exit(NULL);
     }
 
-   printf("%i: exiting thread. \n", tid);
+   printf("%i: exiting writer thread. \n", tid);
    printf("\n");
 
    pthread_exit(NULL);
