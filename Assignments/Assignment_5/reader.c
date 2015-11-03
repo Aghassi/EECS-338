@@ -22,26 +22,24 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   // check if we have writers waiting
-   if(shared->nReaders > 0) {
+   shared->nReaders++;
 
-      // signal mutex
-      if(sem_post(&mutex) == -1) {
-         perror("Failed to signal mutex in reader");
+   if(shared->nReaders == 1) {
+      // wait writer
+      if(sem_wait(&sem_writer) == -1) {
+         perror("failed to wait for mutex in reader");
          pthread_exit(NULL);
       }
    }
-   else {
-      shared->nReaders++;
-
-      // signal mutex
-      if(sem_post(&mutex) == -1) {
-         perror("Failed to signal mutex in reader");
-         pthread_exit(NULL);
-      }
+   // signal mutex
+   if(sem_post(&mutex) == -1) {
+      perror("Failed to signal mutex in reader");
+      pthread_exit(NULL);
    }
 
+   /**** Critical Section ****/
    printf("%i: has read! \n", tid);
+   /**** End Critical Section ****/
 
    // wait mutex
    if(sem_wait(&mutex) == -1) {
@@ -50,8 +48,8 @@ void *reader(void *shared_data) {
    }
 
    shared->nReaders--;
-   if(shared->nReaders == 0 && shared->nWriters > 0) {
-      // signal mutex for writer
+   if(shared->nReaders == 0) {
+      // signal writer
       if(sem_post(&sem_writer) == -1) {
          perror("Failed to signal writer in reader");
          pthread_exit(NULL);

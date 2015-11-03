@@ -28,8 +28,7 @@ int main() {
 
    // Setting up shared data
    struct shared_data shared = {
-      .nReaders = 0,
-      .nWriters = 0
+      .nReaders = 0
    };
 
    // Fork reader
@@ -44,7 +43,7 @@ int main() {
          perror("pthread_create(writerThread)");
          exit(EXIT_FAILURE);
    }
-   
+
    // Wait for children
    if(pthread_join(writerThread, &status) == -1) {
       perror("pthread_join(writerThread)");
