@@ -31,10 +31,6 @@ void *writer(void *shared_data) {
    }
 
    /**** Critical Section ****/
-   for (i = 0; i < 10000; i++)
-   {
-      /* no-op */
-   }
    fflush(stdout);
    printf("%i: has written! \n", tid);
    fflush(stdout);

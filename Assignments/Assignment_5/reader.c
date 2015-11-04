@@ -49,10 +49,6 @@ void *reader(void *shared_data) {
    }
 
    /**** Critical Section ****/
-   for (i = 0; i < 10000; i++)
-   {
-      /* no-op */
-   }
    fflush(stdout);
    printf("%i: has read! \n", tid);
    fflush(stdout);
