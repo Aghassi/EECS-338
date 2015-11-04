@@ -14,9 +14,15 @@ void *writer(void *shared_data) {
    struct timeval tv;
    gettimeofday(&tv, NULL);
    pid_t tid = syscall(SYS_gettid);
+   fflush(stdout);
    printf("%i: entering writer thread at time %03ld \n", tid, tv.tv_usec);
    fflush(stdout);
 
+   int i;
+   for (i = 0; i < 100000; i++)
+   {
+     /* no-op */
+   }
 
    // wait writer
    if(sem_wait(&sem_writer) == -1) {
@@ -25,6 +31,11 @@ void *writer(void *shared_data) {
    }
 
    /**** Critical Section ****/
+   for (i = 0; i < 10000; i++)
+   {
+      /* no-op */
+   }
+   fflush(stdout);
    printf("%i: has written! \n", tid);
    fflush(stdout);
    /**** End Critical Section ****/
@@ -35,7 +46,14 @@ void *writer(void *shared_data) {
        pthread_exit(NULL);
     }
 
-   printf("%i: exiting writer thread. \n", tid);
+    for (i = 0; i < 110000; i++)
+    {
+       /* no-op */
+    }
+
+   gettimeofday(&tv, NULL);
+   fflush(stdout);
+   printf("%i: exiting writer thread at time %03ld \n", tid, tv.tv_usec);
    printf("\n");
    fflush(stdout);
 

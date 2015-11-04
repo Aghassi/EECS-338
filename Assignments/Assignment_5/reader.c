@@ -14,11 +14,18 @@ void *reader(void *shared_data) {
    struct timeval tv;
    gettimeofday(&tv, NULL);
    pid_t tid = syscall(SYS_gettid);
+   fflush(stdout);
    printf("%i: entering reader thread at time %03ld \n", tid, tv.tv_usec);
    fflush(stdout);
 
    // get the shared data
    struct shared_data *shared = (struct shared_data *)shared_data;
+
+   int i;
+   for (i = 0; i < 100000; i++)
+   {
+      /* no-op */
+   }
 
    // wait mutex
    if(sem_wait(&mutex) == -1) {
@@ -42,6 +49,11 @@ void *reader(void *shared_data) {
    }
 
    /**** Critical Section ****/
+   for (i = 0; i < 10000; i++)
+   {
+      /* no-op */
+   }
+   fflush(stdout);
    printf("%i: has read! \n", tid);
    fflush(stdout);
 
@@ -68,7 +80,15 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   printf("%i: exiting reader thread. \n", tid);
+   for (i = 0; i < 110000; i++)
+   {
+      /* no-op */
+   }
+
+
+   gettimeofday(&tv, NULL);
+   fflush(stdout);
+   printf("%i: exiting reader thread at time %03ld \n", tid, tv.tv_usec);
    printf("\n");
    fflush(stdout);
 
