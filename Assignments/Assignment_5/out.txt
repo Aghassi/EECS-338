@@ -1,0 +1,401 @@
+All semaphores initialized
+
+15426: entering writer thread at time 873859
+15426: has written!
+15426: exiting writer thread at time 874905
+
+15430: entering writer thread at time 873985
+15430: has written!
+15430: exiting writer thread at time 876251
+
+15434: entering writer thread at time 874458
+15434: has written!
+15434: exiting writer thread at time 877396
+
+15438: entering writer thread at time 874481
+15438: has written!
+15438: exiting writer thread at time 877999
+
+15443: entering reader thread at time 874501
+15443: has read!
+15443: exiting reader thread at time 878581
+
+15446: entering writer thread at time 874514
+15446: has written!
+15448: entering writer thread at time 874521
+15448: has written!
+15448: exiting writer thread at time 880320
+
+15452: entering writer thread at time 875012
+15452: has written!
+15455: entering reader thread at time 875021
+15455: has read!
+15455: exiting reader thread at time 882323
+
+15460: entering writer thread at time 875035
+15460: has written!
+15462: entering writer thread at time 875043
+15462: has written!
+15462: exiting writer thread at time 884407
+
+15467: entering reader thread at time 875056
+15467: has read!
+15467: exiting reader thread at time 885772
+
+15471: entering reader thread at time 875068
+15471: has read!
+15471: exiting reader thread at time 887013
+15431: entering reader thread at time 874443
+15431: has read!
+15431: exiting reader thread at time 888077
+
+15475: entering reader thread at time 876362
+15475: has read!
+15475: exiting reader thread at time 889207
+
+15479: entering reader thread at time 876377
+15479: has read!
+15479: exiting reader thread at time 890653
+
+15422: entering writer thread at time 876394
+15422: has written!
+15422: exiting writer thread at time 891765
+
+15504: entering writer thread at time 876407
+15504: has written!
+15504: exiting writer thread at time 892354
+
+15503: entering reader thread at time 876421
+15503: has read!
+15503: exiting reader thread at time 893677
+
+15506: entering writer thread at time 876434
+15506: has written!
+15506: exiting writer thread at time 894958
+
+15505: entering reader thread at time 876447
+15509: entering reader thread at time 876453
+15509: has read!
+15509: exiting reader thread at time 896633
+
+15491: entering reader thread at time 876466
+15491: has read!
+15491: exiting reader thread at time 898063
+
+15500: entering writer thread at time 876479
+15511: entering reader thread at time 876485
+15511: has read!
+15511: exiting reader thread at time 899728
+15425: entering reader thread at time 874463
+15425: has read!
+15425: exiting reader thread at time 900903
+
+15440: entering writer thread at time 874489
+15442: entering writer thread at time 874497
+15444: entering writer thread at time 874504
+15424: entering writer thread at time 874511
+15447: entering reader thread at time 874517
+15447: has read!
+15447: exiting reader thread at time 903771
+
+15428: entering writer thread at time 873980
+15453: entering reader thread at time 875015
+15453: has read!
+15453: exiting reader thread at time 905374
+
+15446: exiting writer thread at time 882481
+
+15423: entering reader thread at time 875040
+15423: has read!
+15423: exiting reader thread at time 906866
+
+15460: exiting writer thread at time 884624
+
+15469: entering reader thread at time 875062
+15469: has read!
+15469: exiting reader thread at time 907911
+
+15429: entering reader thread at time 873983
+15429: has read!
+15429: exiting reader thread at time 909170
+
+15432: entering writer thread at time 874449
+15473: entering reader thread at time 876354
+15473: has read!
+15473: exiting reader thread at time 910820
+
+15480: entering writer thread at time 876380
+15482: entering writer thread at time 876388
+
+15483: entering reader thread at time 876391
+15483: has read!
+15483: exiting reader thread at time 913143
+
+15487: entering reader thread at time 876405
+15487: has read!
+15487: exiting reader thread at time 913884
+
+15514: entering writer thread at time 876423
+15513: entering reader thread at time 876429
+15513: has read!
+15513: exiting reader thread at time 914863
+
+15497: entering reader thread at time 876445
+15510: entering writer thread at time 876455
+15505: has read!
+15505: exiting reader thread at time 916316
+
+15502: entering writer thread at time 876471
+15493: entering reader thread at time 876476
+15516: entering writer thread at time 876487
+15433: entering reader thread at time 874454
+15435: entering reader thread at time 874468
+15437: entering reader thread at time 874477
+15439: entering reader thread at time 874485
+15441: entering reader thread at time 874493
+15445: entering reader thread at time 874507
+15449: entering reader thread at time 874525
+15451: entering reader thread at time 874649
+15454: entering writer thread at time 875018
+15456: entering writer thread at time 875024
+15458: entering writer thread at time 875029
+15459: entering reader thread at time 875032
+15461: entering reader thread at time 875038
+15463: entering reader thread at time 875046
+15465: entering reader thread at time 875051
+15468: entering writer thread at time 875059
+15452: exiting writer thread at time 885899
+
+
+15470: entering writer thread at time 875065
+15472: entering writer thread at time 875241
+15474: entering writer thread at time 876358
+15476: entering writer thread at time 876365
+15477: entering reader thread at time 876369
+15481: entering reader thread at time 876384
+15484: entering writer thread at time 876396
+15486: entering writer thread at time 876402
+15421: entering reader thread at time 891787
+15517: entering reader thread at time 876413
+15501: entering reader thread at time 876418
+15489: entering reader thread at time 876432
+15499: entering reader thread at time 876440
+15508: entering writer thread at time 876450
+15515: entering reader thread at time 876461
+15500: has written!
+15500: exiting writer thread at time 933274
+
+15518: entering writer thread at time 876490
+15450: entering writer thread at time 874528
+15457: entering reader thread at time 875027
+15464: entering writer thread at time 875048
+15466: entering writer thread at time 875054
+15478: entering writer thread at time 876373
+15485: entering reader thread at time 876399
+15519: entering reader thread at time 876410
+15492: entering writer thread at time 876426
+15495: entering reader thread at time 876442
+15490: entering writer thread at time 876463
+15440: has written!
+15440: exiting writer thread at time 938744
+
+15496: entering writer thread at time 876474
+15436: entering writer thread at time 874472
+15498: entering writer thread at time 876415
+15512: entering writer thread at time 876458
+15442: has written!
+15442: exiting writer thread at time 941258
+
+15488: entering writer thread at time 876437
+15444: has written!
+15444: exiting writer thread at time 942459
+
+15427: entering reader thread at time 873976
+15424: has written!
+15428: has written!
+15428: exiting writer thread at time 943980
+
+15424: exiting writer thread at time 944308
+
+15507: entering reader thread at time 876482
+15432: has written!
+15432: exiting writer thread at time 945393
+
+15494: entering writer thread at time 876469
+15494: has written!
+15494: exiting writer thread at time 946578
+
+15480: has written!
+15514: has written!
+15514: exiting writer thread at time 947924
+
+15480: exiting writer thread at time 948027
+
+15510: has written!
+15510: exiting writer thread at time 948954
+
+15493: has read!
+15493: exiting reader thread at time 950093
+15437: has read!
+15437: exiting reader thread at time 950661
+
+15439: has read!
+15439: exiting reader thread at time 951345
+
+15461: has read!
+15461: exiting reader thread at time 952100
+
+15463: has read!
+15463: exiting reader thread at time 952875
+
+15481: has read!
+15481: exiting reader thread at time 953750
+
+15421: has read!
+15421: exiting reader thread at time 954516
+
+15515: has read!
+15515: exiting reader thread at time 955357
+
+15485: has read!
+15485: exiting reader thread at time 956153
+
+15507: has read!
+15507: exiting reader thread at time 956894
+15435: has read!
+15435: exiting reader thread at time 957569
+
+15449: has read!
+15449: exiting reader thread at time 958494
+
+15477: has read!
+15477: exiting reader thread at time 959175
+
+15517: has read!
+15517: exiting reader thread at time 959868
+
+
+
+15489: has read!
+15489: exiting reader thread at time 960953
+
+15495: has read!
+15495: exiting reader thread at time 961698
+15433: has read!
+15433: exiting reader thread at time 962441
+
+15451: has read!
+15451: exiting reader thread at time 963191
+
+15501: has read!
+15501: exiting reader thread at time 964027
+
+15519: has read!
+15519: exiting reader thread at time 964712
+
+15445: has read!
+15445: exiting reader thread at time 965442
+
+15499: has read!
+15499: exiting reader thread at time 966119
+
+15441: has read!
+15441: exiting reader thread at time 967067
+
+15457: has read!
+15457: exiting reader thread at time 968100
+
+15497: has read!
+15497: exiting reader thread at time 968840
+15427: has read!
+15427: exiting reader thread at time 969662
+
+15465: has read!
+15465: exiting reader thread at time 970337
+
+
+15459: has read!
+15459: exiting reader thread at time 971183
+
+15502: has written!
+15502: exiting writer thread at time 971802
+
+15516: has written!
+15516: exiting writer thread at time 972355
+
+15454: has written!
+15454: exiting writer thread at time 972999
+
+15456: has written!
+15456: exiting writer thread at time 973671
+
+15458: has written!
+15458: exiting writer thread at time 974386
+
+15468: has written!
+15468: exiting writer thread at time 975076
+
+15470: has written!
+15470: exiting writer thread at time 975765
+
+15472: has written!
+15472: exiting writer thread at time 976328
+
+15474: has written!
+15474: exiting writer thread at time 977023
+
+15476: has written!
+15476: exiting writer thread at time 977356
+
+15484: has written!
+15484: exiting writer thread at time 977839
+
+15486: has written!
+15486: exiting writer thread at time 978318
+
+15508: has written!
+15508: exiting writer thread at time 978748
+
+15518: has written!
+15518: exiting writer thread at time 979071
+
+15450: has written!
+15450: exiting writer thread at time 979392
+
+15464: has written!
+15464: exiting writer thread at time 979864
+
+15466: has written!
+15466: exiting writer thread at time 980409
+
+15478: has written!
+15478: exiting writer thread at time 980723
+
+15492: has written!
+15490: has written!
+15490: exiting writer thread at time 981245
+
+15492: exiting writer thread at time 981709
+
+15436: has written!
+15436: exiting writer thread at time 982094
+
+15498: has written!
+15498: exiting writer thread at time 982502
+
+15512: has written!
+15512: exiting writer thread at time 982858
+
+15488: has written!
+15488: exiting writer thread at time 983326
+
+15482: has written!
+15482: exiting writer thread at time 984591
+
+15496: has written!
+15496: exiting writer thread at time 985252
+
+
+15420: entering writer thread at time 985823
+15420: has written!
+15420: exiting writer thread at time 986919
