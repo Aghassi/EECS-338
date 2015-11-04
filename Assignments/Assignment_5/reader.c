@@ -49,9 +49,18 @@ void *reader(void *shared_data) {
    }
 
    /**** Critical Section ****/
+   for (i = 0; i < 1000000; i++)
+   {
+     /* no-op */
+   }
    fflush(stdout);
-   printf("%i: has read! \n", tid);
+   gettimeofday(&tv, NULL);
+   printf("%i: has read at time %03ld! \n", tid, tv.tv_usec);
    fflush(stdout);
+   for (i = 0; i < 1000000; i++)
+   {
+     /* no-op */
+   }
 
    /**** End Critical Section ****/
 

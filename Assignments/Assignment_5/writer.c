@@ -31,9 +31,18 @@ void *writer(void *shared_data) {
    }
 
    /**** Critical Section ****/
+   for (i = 0; i < 1000000; i++)
+   {
+     /* no-op */
+   }
    fflush(stdout);
-   printf("%i: has written! \n", tid);
+   gettimeofday(&tv, NULL);
+   printf("%i: has writen at time %03ld! \n", tid, tv.tv_usec);
    fflush(stdout);
+   for (i = 0; i < 1000000; i++)
+   {
+     /* no-op */
+   }
    /**** End Critical Section ****/
 
    // signal writer
