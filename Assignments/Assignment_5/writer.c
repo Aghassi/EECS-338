@@ -19,7 +19,7 @@ void *writer(void *shared_data) {
    fflush(stdout);
 
    int i;
-   for (i = 0; i < 100000; i++)
+   for (i = 0; i < 1000000; i++)
    {
      /* no-op */
    }
@@ -42,7 +42,7 @@ void *writer(void *shared_data) {
        pthread_exit(NULL);
     }
 
-    for (i = 0; i < 110000; i++)
+    for (i = 0; i < 1000000; i++)
     {
        /* no-op */
     }

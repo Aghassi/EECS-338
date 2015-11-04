@@ -22,7 +22,7 @@ void *reader(void *shared_data) {
    struct shared_data *shared = (struct shared_data *)shared_data;
 
    int i;
-   for (i = 0; i < 100000; i++)
+   for (i = 0; i < 1000000; i++)
    {
       /* no-op */
    }
@@ -76,7 +76,7 @@ void *reader(void *shared_data) {
       pthread_exit(NULL);
    }
 
-   for (i = 0; i < 110000; i++)
+   for (i = 0; i < 1000000; i++)
    {
       /* no-op */
    }
