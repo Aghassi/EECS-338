@@ -33,6 +33,7 @@ int main() {
    int i;
    for (i = 0; i < NUM_THREADS; i++)
    {
+      fflush(stdout);
       if (i%2 == 0) {
          // Fork writer
          if(pthread_create(&threads[i], NULL, writer, (void *)&shared) == -1) {
@@ -47,6 +48,7 @@ int main() {
                exit(EXIT_FAILURE);
          }
       }
+      fflush(stdout);
    }  
 
    for (i = 0; i < NUM_THREADS; i++)

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
+#include <sys/time.h>
 #include <signal.h>
 #include <unistd.h>
 #include <pthread.h>
@@ -10,8 +11,10 @@
 #include "common.h"
 
 void *writer(void *shared_data) {
+   struct timeval tv;
+   gettimeofday(&tv, NULL);
    pid_t tid = syscall(SYS_gettid);
-   printf("%i: entering writer thread. \n", tid);
+   printf("%i: entering writer thread at time %03ld \n", tid, tv.tv_usec);
    fflush(stdout);
 
 
