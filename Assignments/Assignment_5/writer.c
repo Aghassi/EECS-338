@@ -31,7 +31,7 @@ void *writer(void *shared_data) {
    }
 
    /**** Critical Section ****/
-   for (i = 0; i < 1000000; i++)
+   for (i = 0; i < 10000000; i++)
    {
      /* no-op */
    }
@@ -39,7 +39,7 @@ void *writer(void *shared_data) {
    gettimeofday(&tv, NULL);
    printf("%i: has writen at time %03ld! \n", tid, tv.tv_usec);
    fflush(stdout);
-   for (i = 0; i < 1000000; i++)
+   for (i = 0; i < 10000000; i++)
    {
      /* no-op */
    }
