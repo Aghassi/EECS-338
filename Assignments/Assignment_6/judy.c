@@ -4,8 +4,10 @@
 int main(int argc, char *argv[]) {
 	CLIENT *client;
 	
-	int *return_value, filler;
+	int *return_value;
 	char *server;
+	input *parameters = (input *)malloc(sizeof(input));
+		
 
 	/*
            We must specify a host on which to run.  We will get the host name
@@ -27,4 +29,5 @@ int main(int argc, char *argv[]) {
         }
 
 	// Call funcion
+	printf("Judy: Calling function. \n");
 }
