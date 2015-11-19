@@ -9,7 +9,7 @@ int cookieCount = 20;
 // if this is set to 0, we set it back to 2
 int tinaCount = 2;
 
-int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
+int * get_cookie_1_svc(struct input *argp, struct svc_req *rqstp) {
     // Make sure that Tina gets her priority
     if(argp->name == 'J') {
         if (tinaCount == 0 ) {

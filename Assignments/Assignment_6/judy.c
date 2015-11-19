@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     while(ret != -2) {
       sleep(2);
       printf("Judy: Calling function. \n");
-      ret = getCookie_1(parameters, client);
+      ret = get_cookie_1(parameters, client);
       if (result == (void *) NULL) {
           clnt_perror (clnt, "call failed");
       }
