@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
       sleep(2);
       printf("Judy: Calling function. \n");
       ret = (int *)get_cookie_1(parameters, client);
-      if (result == (void *) NULL) {
+      if (ret == (void *) NULL) {
           clnt_perror (clnt, "call failed");
       }
     }
