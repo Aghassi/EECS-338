@@ -37,12 +37,12 @@ int main(int argc, char *argv[]) {
     // there are no more cookies
     while(ret != -2) {
       sleep(2);
+      printf("Judy: Calling function. \n");
       ret = getCookie_1(parameters, client);
       if (result == (void *) NULL) {
           clnt_perror (clnt, "call failed");
       }
     }
 
-    printf("Judy: Calling function. \n");
     clnt_destroy(client);
 }
