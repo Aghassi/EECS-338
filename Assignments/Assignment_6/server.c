@@ -13,7 +13,7 @@ int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
     // Make sure that Tina gets her priority
     if(argp->name == 'Judy' ) {
         if (tinaCount == 0 ) {
-            decrementCookie();
+            return decrementCookie();
         }
         else if(tinaCount > 0) {
             // Judy has to wait for Tina to have at least 2
@@ -21,14 +21,14 @@ int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
         }
     }
     else {
-        decrementCookie();
+        return decrementCookie();
     }    
 
     // We should never reach this point
     return 0;
 }
 
-void decrementCookie() {
+int * decrementCookie() {
     if(cookieCount == 0) {
         // We are all out of cookies
         return -2;
