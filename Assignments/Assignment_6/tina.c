@@ -5,7 +5,6 @@
 int main(int argc, char *argv[]) {
   CLIENT *client;
 
-  int *return_value;
   char *server;
   input *parameters = (input *)malloc(sizeof(input));
   parameters->name = 'T';
@@ -35,7 +34,7 @@ int main(int argc, char *argv[]) {
     int *ret = 0;
     // We loop and run at a 2 second interval until
     // there are no more cookies
-    while(ret != -2) {
+    while(*ret != -2) {
       sleep(1);
       printf("Tina: Calling function. \n");
       ret = (int *)get_cookie_1(parameters, client);
