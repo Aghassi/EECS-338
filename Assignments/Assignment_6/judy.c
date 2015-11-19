@@ -32,13 +32,13 @@ int main(int argc, char *argv[]) {
     // Call funcion
 
     // this is the value we get back from the server 
-    int ret = 0;
+    int *ret = 0;
     // We loop and run at a 2 second interval until
     // there are no more cookies
-    while(ret != -2) {
+    while(&ret != -2) {
       sleep(2);
       printf("Judy: Calling function. \n");
-      ret = get_cookie_1(parameters, client);
+      ret = (int *)get_cookie_1(parameters, client);
       if (result == (void *) NULL) {
           clnt_perror (clnt, "call failed");
       }
