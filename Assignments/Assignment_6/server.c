@@ -11,7 +11,7 @@ int tinaCount = 2;
 
 int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
     // Make sure that Tina gets her priority
-    if(argp->name == 'Judy' ) {
+    if(argp->name == "Judy" ) {
         if (tinaCount == 0 ) {
             return decrementCookie();
         }

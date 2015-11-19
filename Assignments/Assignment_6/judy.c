@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
   int *return_value;
   char *server;
   input *parameters = (input *)malloc(sizeof(input));
-  parameters->name = 'Judy';
+  parameters->name = "Judy";
 
 
   /*
