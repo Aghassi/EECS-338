@@ -17,7 +17,7 @@ int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
         }
         else if(tinaCount > 0) {
             // Judy has to wait for Tina to have at least 2
-            return -1;
+            return (int *)-1;
         }
     }
     else {
@@ -31,11 +31,11 @@ int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
 int * decrementCookie() {
     if(cookieCount == 0) {
         // We are all out of cookies
-        return -2;
+        return (int *)-2;
     }
     else {
         // Hand out a cookie
         cookieCount--;
-        return 1;
+        return (int *)1;
     }
 }
