@@ -2,7 +2,7 @@
 #include "server.h"
 #include <rpc/rpc.h>
 
-void decrementCookie();
+int * decrementCookie();
 
 // create total amount of cookies
 int cookieCount = 20;
@@ -11,7 +11,7 @@ int tinaCount = 2;
 
 int * getCookie_1_svc(struct input *argp, struct svc_req *rqstp) {
     // Make sure that Tina gets her priority
-    if(argp->name == "Judy" ) {
+    if(argp->name == 'J') {
         if (tinaCount == 0 ) {
             return decrementCookie();
         }
