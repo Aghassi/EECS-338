@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
       printf("Judy: Calling function. \n");
       ret = (int *)get_cookie_1(parameters, client);
       if (ret == (void *) NULL) {
-          clnt_perror (clnt, "call failed");
+          clnt_perror (client, "call failed");
       }
     }
 
