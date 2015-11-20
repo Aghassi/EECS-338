@@ -24,23 +24,29 @@ int main(int argc, char *argv[]) {
   /*
    Generate the client handle to call the server
   */
+  printf("Creating client \n");
   client=clnt_create(server, ASSN6, DISPLAY_VER, "udp");
   if ( client == NULL) {
     clnt_pcreateerror(server);
     exit(2);
   }
-        
+  printf("Client created \n");
+
   // Call funcion
 
   // this is the value we get back from the server 
-  int *ret = 0;
+  printf("Creating return variable \n");
+  int *ret;
+  printf("Created return variable \n");
 
   // We loop and run at a 2 second interval until
   // there are no more cookies
-  while(*ret != -2) {
+   printf("entering while loop \n");
+   while(*ret != -2) {
     sleep(2);
     printf("Judy: Asking for cookie. \n");
-    ret = (int *)get_cookie_1(parameters, client);
+    ret = get_cookie_1(parameters, client);
+    printf("the value of ret is: %i", *ret);
     if (ret == NULL) {
       clnt_perror (client, "call failed");
     }
