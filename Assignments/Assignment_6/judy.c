@@ -36,12 +36,19 @@ int main(int argc, char *argv[]) {
     // there are no more cookies
     while(*ret != -2) {
       sleep(2);
-      printf("Judy: Calling function. \n");
+      printf("Judy: Asking for cookie. \n");
       ret = (int *)get_cookie_1(parameters, client);
-      if (ret == (void *) NULL) {
-          clnt_perror (client, "call failed");
+      if (ret == NULL) {
+        clnt_perror (client, "call failed");
+      }
+      else if (*ret == -1) {
+        printf("Judy: Waiting on Tina to get her second cookie.\n");
+      }
+      else {
+        printf("Judy: Got a cookie. \n");
       }
     }
+    printf("Tina: Mother says there are no more cookies. \n");
 
     clnt_destroy(client);
 }

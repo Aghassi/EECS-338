@@ -38,10 +38,14 @@ int main(int argc, char *argv[]) {
       sleep(1);
       printf("Tina: Calling function. \n");
       ret = (int *)get_cookie_1(parameters, client);
-      if (ret == (void *) NULL) {
+      if (ret == NULL) {
           clnt_perror (client, "call failed");
       }
+      else {
+        printf("Tina: Got a cookie. \n");
+      }
     }
+    printf("Tina: Mother says there are no more cookies. \n");
 
     clnt_destroy(client);
 }
