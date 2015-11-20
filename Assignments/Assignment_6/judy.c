@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
        fprintf(stderr, "Usage: %s host_name\n", *argv);
        exit(1);
      }
+     printf("%s\n", argv[1]);
      server = argv[1];
 
     /*
