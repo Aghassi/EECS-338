@@ -35,7 +35,7 @@ int * decrementCookie() {
     }
     else {
         // Hand out a cookie
-        fprintf("A cookie has been given out. There are now %i cookies", cookieCount);
+        printf("A cookie has been given out. There are now %i cookies", cookieCount);
         cookieCount--;
         return (int *)1;
     }
