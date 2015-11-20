@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
   while(*ret != -2) {
     sleep(1);
     printf("Tina: Calling function. \n");
-    ret = (int *)get_cookie_1(parameters, client);
+    ret = (int *)get_cookie_1_svc(parameters, client);
     if (ret == NULL) {
         clnt_perror (client, "call failed");
     }
