@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
   }
   printf("Tina: Mother says there are no more cookies. \n");
 
+  free(parameters);
   clnt_destroy(client);
   return 0;
 }

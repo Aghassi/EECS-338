@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 
   // We loop and run at a 2 second interval until
   // there are no more cookies
-   printf("entering while loop \n");
+  printf("entering while loop \n");
   while(*ret != -2) {
     sleep(1);
     printf("Tina: Calling function. \n");
@@ -55,6 +55,7 @@ int main(int argc, char *argv[]) {
   }
   printf("Tina: Mother says there are no more cookies. \n");
 
+  free(parameters);
   clnt_destroy(client);
   return 0;
 }
