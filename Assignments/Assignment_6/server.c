@@ -32,9 +32,6 @@ int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
     }
     else {
     	// Reset the Tina's count if she hit 0
-    	if (tinaCount == 0) {
-        	tinaCount = 2;
-    	}
         return decrementCookie(argp);
     }    
 
@@ -51,6 +48,9 @@ int * decrementCookie(input *argp) {
         printf("A cookie has been given out. There are now %i cookies \n", cookieCount);
 	if (argp->name == 'T') {
 		tinaCount--;
+    		if (tinaCount == 0) {
+        		tinaCount = 2;
+    		}
 	}
         return &giveCookie;
 }
