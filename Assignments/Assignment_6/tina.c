@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   // there are no more cookies
   printf("entering while loop \n");
   while(*ret != -2) {
-    sleep(3);
+    sleep(4);
     printf("Tina: Calling function. \n");
     ret = get_cookie_1(parameters, client);
     if (ret == NULL) {
