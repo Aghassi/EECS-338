@@ -47,7 +47,6 @@ int main(int argc, char *argv[]) {
     sleep(2);
     printf("Judy: Asking for cookie. \n");
     ret = get_cookie_1(parameters, client);
-    printf("the value of ret is: %i \n", *ret);
     if (ret == NULL) {
       clnt_perror (client, "call failed");
     }

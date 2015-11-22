@@ -46,9 +46,9 @@ int * decrementCookie(input *argp) {
         return &outOfCookies;
     }
     else {
+        cookieCount--;
         // Hand out a cookie
         printf("A cookie has been given out. There are now %i cookies \n", cookieCount);
-        cookieCount--;
 	if (argp->name == 'T') {
 		tinaCount--;
 	}
