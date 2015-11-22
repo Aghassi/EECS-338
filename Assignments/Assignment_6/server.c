@@ -14,11 +14,6 @@ int judyWaits = -1;
 int giveCookie = 1;
 
 int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
-    // Reset the Tina's count if she hit 0
-    if (tinaCount == 0) {
-        tinaCount = 2;
-    }
- 
     // Make sure that Tina gets her priority
     if(argp->name == 'J') {
         if (tinaCount == 0 ) {
@@ -31,6 +26,10 @@ int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
         }
     }
     else {
+    	// Reset the Tina's count if she hit 0
+    	if (tinaCount == 0) {
+        	tinaCount = 2;
+    	}
         return decrementCookie(argp);
     }    
 

@@ -9,6 +9,7 @@ int main(int argc, char *argv[]) {
   input *parameters = (input *)malloc(sizeof(input));
   parameters->name = 'T';
 
+  int totalCookies = 0;
 
   /*
    We must specify a host on which to run.  We will get the host name
@@ -50,10 +51,12 @@ int main(int argc, char *argv[]) {
         clnt_perror (client, "call failed");
     }
     else {
+      totalCookies++;
       printf("Tina: Got a cookie. \n");
     }
   }
   printf("Tina: Mother says there are no more cookies. \n");
+  printf("Tina: I got %i cookies \n", totalCookies);
 
   free(parameters);
   clnt_destroy(client);
