@@ -5,9 +5,9 @@
 int * decrementCookie();
 
 // create total amount of cookies
-int cookieCount = 20;
+static int cookieCount = 20;
 // if this is set to 0, we set it back to 2
-int tinaCount = 2;
+static int tinaCount = 2;
 
 int outOfCookies = -2;
 int judyWaits = -1;
@@ -20,7 +20,7 @@ int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
             return decrementCookie();
         }
         else if(tinaCount > 0) {
-            printf("Judy must wait for Tina to get 2 cookies");
+            printf("Judy must wait for Tina to get 2 cookies \n");
             // Judy has to wait for Tina to have at least 2
             return &judyWaits;
         }
@@ -40,7 +40,7 @@ int * decrementCookie() {
     }
     else {
         // Hand out a cookie
-        printf("A cookie has been given out. There are now %i cookies", cookieCount);
+        printf("A cookie has been given out. There are now %i cookies \n", cookieCount);
         cookieCount--;
         return &giveCookie;
     }

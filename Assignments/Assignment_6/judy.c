@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
     sleep(2);
     printf("Judy: Asking for cookie. \n");
     ret = get_cookie_1(parameters, client);
-    printf("the value of ret is: %i", *ret);
+    printf("the value of ret is: %i \n", *ret);
     if (ret == NULL) {
       clnt_perror (client, "call failed");
     }
@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
       printf("Judy: Got a cookie. \n");
     }
   }
-  printf("Tina: Mother says there are no more cookies. \n");
+  printf("Judy: Mother says there are no more cookies. \n");
 
   free(parameters);
   clnt_destroy(client);
