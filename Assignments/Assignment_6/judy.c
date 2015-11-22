@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
   input *parameters = (input *)malloc(sizeof(input));
   parameters->name = 'J';
 
-  int totalCookies = 0;
+  int totalCookies = -1;
 
   /*
    We must specify a host on which to run.  We will get the host name

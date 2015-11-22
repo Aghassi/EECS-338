@@ -14,6 +14,9 @@ int judyWaits = -1;
 int giveCookie = 1;
 
 int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
+    if (tinaCount == 0) {
+ 	tinaCount = 2;
+    }
     if(cookieCount == 0) {
         // We are all out of cookies
         return &outOfCookies;
@@ -48,9 +51,6 @@ int * decrementCookie(input *argp) {
         printf("A cookie has been given out. There are now %i cookies \n", cookieCount);
 	if (argp->name == 'T') {
 		tinaCount--;
-    		if (tinaCount == 0) {
-        		tinaCount = 2;
-    		}
 	}
         return &giveCookie;
 }
