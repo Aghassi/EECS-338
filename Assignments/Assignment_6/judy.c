@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
   // there are no more cookies
    printf("entering while loop \n");
    while(*ret != -2) {
-    sleep(2);
+    sleep(1);
     printf("Judy: Asking for cookie. \n");
     ret = get_cookie_1(parameters, client);
     if (ret == NULL) {
