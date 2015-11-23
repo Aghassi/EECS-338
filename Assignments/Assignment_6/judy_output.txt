@@ -1,0 +1,66 @@
+eecslinab3.case.edu
+Creating client
+Client created
+Creating return variable
+Created return variable
+entering while loop
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Waiting on Tina to get her second cookie.
+Judy: Asking for cookie.
+Judy: Got a cookie.
+Judy: Mother says there are no more cookies.
+Judy: I got 6 cookies

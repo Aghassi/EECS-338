@@ -43,7 +43,7 @@ int * get_cookie_1_svc(input *argp, struct svc_req *rqstp) {
 * A function for handing out cookies
 **/
 int * decrementCookie(input *argp) {
-    	if (tinaCount == 0) {
+    if (tinaCount == 0) {
  		tinaCount = 2;
    	}
         cookieCount--;
@@ -59,5 +59,5 @@ int * decrementCookie(input *argp) {
 	if (argp->name == 'T') {
 		tinaCount--;
 	}
-        return &giveCookie;
+    return &giveCookie;
 }
