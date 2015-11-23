@@ -4,35 +4,35 @@ Client created
 Creating return variable
 Created return variable
 entering while loop
-Tina: Calling function.
+Tina: Calling function. 828651
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 829067
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 829466
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 829868
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 830297
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 830666
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 831029
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 831400
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 831792
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 832151
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 832620
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 832939
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 833307
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 833676
 Tina: Got a cookie.
-Tina: Calling function.
+Tina: Calling function. 834049
 Tina: Got a cookie.
-Tina: Mother says there are no more cookies.
-Tina: I got 14 cookies
+Tina: Mother says there are no more cookies. 834342
+Tina: I got 14 cookies 834344

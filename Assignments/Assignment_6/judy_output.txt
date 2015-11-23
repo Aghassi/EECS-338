@@ -4,63 +4,63 @@ Client created
 Creating return variable
 Created return variable
 entering while loop
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Waiting on Tina to get her second cookie.
-Judy: Asking for cookie.
-Judy: Got a cookie.
-Judy: Mother says there are no more cookies.
-Judy: I got 6 cookies
+Judy: Asking for cookie. 108202
+Judy: Waiting on Tina to get her second cookie. 108632
+Judy: Asking for cookie. 108729
+Judy: Waiting on Tina to get her second cookie. 109155
+Judy: Asking for cookie. 109243
+Judy: Waiting on Tina to get her second cookie. 109670
+Judy: Asking for cookie. 109759
+Judy: Waiting on Tina to get her second cookie. 110140
+Judy: Asking for cookie. 110236
+Judy: Got a cookie. 110653
+Judy: Asking for cookie. 110738
+Judy: Waiting on Tina to get her second cookie. 111142
+Judy: Asking for cookie. 111228
+Judy: Waiting on Tina to get her second cookie. 111689
+Judy: Asking for cookie. 111774
+Judy: Waiting on Tina to get her second cookie. 112176
+Judy: Asking for cookie. 112270
+Judy: Got a cookie. 112686
+Judy: Asking for cookie. 112764
+Judy: Waiting on Tina to get her second cookie. 113192
+Judy: Asking for cookie. 113271
+Judy: Waiting on Tina to get her second cookie. 113650
+Judy: Asking for cookie. 113739
+Judy: Waiting on Tina to get her second cookie. 114122
+Judy: Asking for cookie. 114199
+Judy: Got a cookie. 114601
+Judy: Asking for cookie. 114684
+Judy: Waiting on Tina to get her second cookie. 115099
+Judy: Asking for cookie. 115185
+Judy: Waiting on Tina to get her second cookie. 115575
+Judy: Asking for cookie. 115660
+Judy: Waiting on Tina to get her second cookie. 116093
+Judy: Asking for cookie. 116179
+Judy: Got a cookie. 116566
+Judy: Asking for cookie. 116654
+Judy: Waiting on Tina to get her second cookie. 117052
+Judy: Asking for cookie. 117142
+Judy: Waiting on Tina to get her second cookie. 117568
+Judy: Asking for cookie. 117651
+Judy: Waiting on Tina to get her second cookie. 118022
+Judy: Asking for cookie. 118101
+Judy: Got a cookie. 118477
+Judy: Asking for cookie. 118561
+Judy: Waiting on Tina to get her second cookie. 119000
+Judy: Asking for cookie. 119078
+Judy: Waiting on Tina to get her second cookie. 119451
+Judy: Asking for cookie. 119537
+Judy: Waiting on Tina to get her second cookie. 119937
+Judy: Asking for cookie. 120029
+Judy: Got a cookie. 120449
+Judy: Asking for cookie. 120547
+Judy: Waiting on Tina to get her second cookie. 120958
+Judy: Asking for cookie. 121042
+Judy: Waiting on Tina to get her second cookie. 121405
+Judy: Asking for cookie. 121495
+Judy: Waiting on Tina to get her second cookie. 121913
+Judy: Asking for cookie. 122004
+Judy: Got a cookie. 122404
+Judy: Mother says there are no more cookies. 122410
+Judy: I got 6 cookies  122412
