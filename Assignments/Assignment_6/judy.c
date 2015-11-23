@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include "server.h"
 #include <rpc/rpc.h>
+#include <sys/time.h>
 
 int main(int argc, char *argv[]) {
+  struct timeval tv;
   CLIENT *client;
 
   char *server;
@@ -45,21 +47,26 @@ int main(int argc, char *argv[]) {
    printf("entering while loop \n");
    while(*ret != -2) {
     sleep(1);
-    printf("Judy: Asking for cookie. \n");
+    gettimeofday(&tv, NULL);
+    printf("Judy: Asking for cookie. %03ld \n", tv.tv_usec);
     ret = get_cookie_1(parameters, client);
     if (ret == NULL) {
       clnt_perror (client, "call failed");
     }
     else if (*ret == -1) {
-      printf("Judy: Waiting on Tina to get her second cookie.\n");
+      gettimeofday(&tv, NULL);
+      printf("Judy: Waiting on Tina to get her second cookie. %03ld \n", tv.tv_usec);
     }
     else {
       totalCookies++;
-      printf("Judy: Got a cookie. \n");
+      gettimeofday(&tv, NULL);
+      printf("Judy: Got a cookie. %03ld \n", tv.tv_usec);
     }
   }
-  printf("Judy: Mother says there are no more cookies. \n");
-  printf("Judy: I got %i cookies \n", totalCookies);
+  gettimeofday(&tv, NULL);
+  printf("Judy: Mother says there are no more cookies. %03ld \n", tv.tv_usec);
+  gettimeofday(&tv, NULL);
+  printf("Judy: I got %i cookies  %03ld \n", totalCookies, tv.tv_usec);
 
   free(parameters);
   clnt_destroy(client);
